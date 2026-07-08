@@ -39,6 +39,12 @@ if ("IntersectionObserver" in window) {
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Header shadow once the page is scrolled
+const header = document.querySelector(".site-header");
+const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 12);
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
 /* ============================================================
    CMS content hydration
    Loads content/site.json (edited via /admin) and fills the
@@ -61,10 +67,21 @@ function setHTML(selector, value) {
   if (el && value != null) el.innerHTML = rich(value);
 }
 
-function setImage(selector, src) {
+// Serve images through Netlify's image CDN (resized + WebP) when live.
+// Falls back to the original file locally or if the CDN request fails.
+function optimizedSrc(src, width) {
+  if (!src) return src;
+  const local = ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
+  if (local || window.location.protocol === "file:") return src;
+  const path = "/" + src.replace(/^\//, "");
+  return `/.netlify/images?url=${encodeURIComponent(path)}&w=${width}&q=75&fm=webp`;
+}
+
+function setImage(selector, src, width = 1000) {
   const el = document.querySelector(selector);
   if (el && src) {
-    el.src = src;
+    el.onerror = () => { el.onerror = null; el.src = src; };
+    el.src = optimizedSrc(src, width);
     el.parentElement.classList.remove("img-missing");
   }
 }
@@ -156,7 +173,7 @@ async function hydrateContent() {
     if (c.cta.image) {
       document.querySelector(".cta-band").style.background =
         `linear-gradient(135deg, rgba(38,58,49,0.92), rgba(62,92,80,0.88)), ` +
-        `url("${c.cta.image}") center 30% / cover no-repeat`;
+        `url("${optimizedSrc(c.cta.image, 1600)}") center 30% / cover no-repeat`;
     }
   }
 
