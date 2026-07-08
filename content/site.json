@@ -1,0 +1,129 @@
+{
+  "hero": {
+    "eyebrow": "Human Design · Coaching · Energy Healing",
+    "headline": "Bridge the gap between the *practical* and the *energetic*.",
+    "lead": "Integrative coaching grounded in Human Design and Reiki — so you can make real-life decisions that feel aligned, clear and truly yours.",
+    "cta_primary": "Book Your Free 30-Minute Call",
+    "cta_secondary": "Explore Services",
+    "bullets": [
+      "Online worldwide & in-person in Beirut",
+      "Sessions in English & Italian",
+      "No pressure — the first call is free"
+    ],
+    "image": "images/laura-hero.jpg"
+  },
+  "about": {
+    "heading": "Your guide to alignment",
+    "p1": "I'm Laura — an integrative coach and energy healing practitioner based in Beirut. My work brings together **Human Design**, **Reiki** and intuitive tools like tarot to help you understand how you're uniquely wired, release what's holding you back, and move forward with confidence.",
+    "p2": "No jargon, no one-size-fits-all formulas. Just a grounded, personal process built around your energy, your goals and your life.",
+    "checklist": [
+      "A practical approach to spiritual tools",
+      "Personalised sessions — never a script",
+      "A safe, judgment-free space"
+    ],
+    "name": "Laura Brambilla",
+    "role": "Founder · Coach · Reiki Practitioner",
+    "button": "Start With a Free Call",
+    "image": "images/laura-portrait.jpg"
+  },
+  "human_design": {
+    "heading": "What is Human Design?",
+    "sub": "Think of it as your energetic blueprint — a map of how you're designed to make decisions, use your energy and interact with the world.",
+    "image": "images/laura-studio.jpg",
+    "cards": [
+      {
+        "icon": "◐",
+        "title": "Know your type",
+        "text": "Discover how your energy naturally works — and why forcing yourself into someone else's strategy never felt right."
+      },
+      {
+        "icon": "◆",
+        "title": "Trust your decisions",
+        "text": "Learn your inner authority: a reliable, personal way to make choices without second-guessing everything."
+      },
+      {
+        "icon": "✳",
+        "title": "Live it, practically",
+        "text": "We translate your chart into everyday actions — career, relationships, boundaries — not abstract theory."
+      }
+    ]
+  },
+  "services": {
+    "heading": "Integrative coaching for a holistic life",
+    "sub": "Every journey starts with a free discovery call so we can find the right path for you.",
+    "items": [
+      {
+        "title": "Human Design Coaching",
+        "text": "One-to-one coaching guided by your Human Design chart. Clarity on purpose, career, identity and the patterns that keep repeating.",
+        "bullets": [
+          "Full chart reading & walkthrough",
+          "Single sessions or ongoing packages",
+          "Online or in person"
+        ],
+        "featured": false
+      },
+      {
+        "title": "Reiki Energy Healing",
+        "text": "Gentle, deeply restorative energy work to release tension and stress, restore balance and reconnect body and mind.",
+        "bullets": [
+          "60-minute sessions",
+          "In-person in Beirut or distance Reiki",
+          "Perfect alongside coaching"
+        ],
+        "featured": true
+      },
+      {
+        "title": "Tarot Guidance",
+        "text": "Intuitive readings used as a reflective tool — to surface what you already sense and open up honest, useful conversations.",
+        "bullets": [
+          "Focused single-question readings",
+          "Deeper life-theme spreads",
+          "Standalone or within coaching"
+        ],
+        "featured": false
+      }
+    ]
+  },
+  "focus_tags": [
+    "Purpose & life alignment",
+    "Emotional well-being",
+    "Identity & beliefs",
+    "Business & career",
+    "Relationships",
+    "Mind–body connection"
+  ],
+  "steps": [
+    {
+      "title": "Book your free call",
+      "text": "A relaxed 30-minute conversation. We talk about where you are and what you're looking for."
+    },
+    {
+      "title": "Get your plan",
+      "text": "I suggest the right mix of coaching, Reiki or readings — with clear expectations and pricing upfront."
+    },
+    {
+      "title": "Begin your journey",
+      "text": "We meet online or in Beirut, at your pace. You stay in the driver's seat the whole way."
+    }
+  ],
+  "testimonial": {
+    "quote": "Working with Laura gave me a completely new understanding of how I operate. The sessions were practical, warm and surprisingly precise — I left every one with something concrete to apply.",
+    "name": "Manuele Acconcia",
+    "role": "Coaching client"
+  },
+  "cta": {
+    "heading": "Ready to discover your path?",
+    "text": "The first step is a free, no-pressure 30-minute discovery call.",
+    "button": "Book Your Free Call",
+    "image": "images/laura-journey.jpg"
+  },
+  "contact": {
+    "intro": "Send a message and I'll get back to you within 1–2 working days. Or reach out directly:",
+    "email": "hello@reflectingjourneys.com",
+    "instagram": "@reflecting_journeys",
+    "location": "Beirut, Lebanon · Online worldwide"
+  },
+  "footer": {
+    "tagline": "Human Design coaching & energy healing.\nBeirut · Online worldwide."
+  }
+}
