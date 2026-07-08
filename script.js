@@ -4,6 +4,7 @@ const siteNav = document.getElementById("site-nav");
 
 navToggle.addEventListener("click", () => {
   const open = siteNav.classList.toggle("open");
+  document.body.classList.toggle("nav-open", open);
   navToggle.setAttribute("aria-expanded", String(open));
   navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 });
@@ -12,9 +13,33 @@ navToggle.addEventListener("click", () => {
 siteNav.addEventListener("click", (e) => {
   if (e.target.tagName === "A" && siteNav.classList.contains("open")) {
     siteNav.classList.remove("open");
+    document.body.classList.remove("nav-open");
     navToggle.setAttribute("aria-expanded", "false");
   }
 });
+
+// Scrollspy: highlight the nav link for the section in view
+const spyLinks = Array.from(
+  document.querySelectorAll('.site-nav a[href^="#"]:not(.btn)')
+);
+const spyTargets = spyLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+if ("IntersectionObserver" in window && spyTargets.length) {
+  const spy = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          spyLinks.forEach((l) =>
+            l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id)
+          );
+        }
+      }
+    },
+    { rootMargin: "-35% 0px -55% 0px" }
+  );
+  spyTargets.forEach((t) => spy.observe(t));
+}
 
 // Reveal-on-scroll animations
 const revealEls = document.querySelectorAll(".reveal");

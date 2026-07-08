@@ -6,113 +6,117 @@ media_folder: "images/uploads"
 public_folder: "images/uploads"
 
 site_url: /
-logo_url: /images/uploads/logo.png
+display_url: /
 
 collections:
   - name: "site"
-    label: "Website"
+    label: "✏️ Edit My Website"
+    description: "Click 'Website Content' below, change anything you like, then press the green Publish button at the top. Your website updates in about one minute."
+    editor:
+      preview: false
     files:
       - name: "content"
         label: "Website Content"
         file: "content/site.json"
-        description: "Everything on the homepage. Use *word* for italics and **word** for bold."
         fields:
-          - label: "Hero (top of page)"
+          - label: "1 · Top of the page"
             name: "hero"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Small label above headline", name: "eyebrow", widget: "string" }
-              - { label: "Headline", name: "headline", widget: "string", hint: "Wrap words in *asterisks* for elegant italics." }
-              - { label: "Intro sentence", name: "lead", widget: "text" }
-              - { label: "Main button text", name: "cta_primary", widget: "string" }
+              - { label: "Small line above the big title", name: "eyebrow", widget: "string" }
+              - { label: "Big title", name: "headline", widget: "string", hint: "Tip: put *stars* around a word to make it italic and green." }
+              - { label: "Sentence under the title", name: "lead", widget: "text" }
+              - { label: "Green button text", name: "cta_primary", widget: "string" }
               - { label: "Second button text", name: "cta_secondary", widget: "string" }
-              - { label: "Trust bullets", name: "bullets", widget: "list", field: { label: "Bullet", name: "bullet", widget: "string" } }
-              - { label: "Hero photo", name: "image", widget: "image" }
-          - label: "About"
+              - { label: "Three short trust lines", name: "bullets", widget: "list", allow_add: true, field: { label: "Line", name: "bullet", widget: "string" } }
+              - { label: "Photo", name: "image", widget: "image", hint: "Best: a tall (portrait) photo." }
+          - label: "2 · About me"
             name: "about"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "First paragraph", name: "p1", widget: "text" }
+              - { label: "Title", name: "heading", widget: "string" }
+              - { label: "First paragraph", name: "p1", widget: "text", hint: "Put **two stars** around words to make them bold." }
               - { label: "Second paragraph", name: "p2", widget: "text" }
-              - { label: "Checklist points", name: "checklist", widget: "list", field: { label: "Point", name: "point", widget: "string" } }
-              - { label: "Name (badge)", name: "name", widget: "string" }
-              - { label: "Role (badge)", name: "role", widget: "string" }
+              - { label: "Three checkmark points", name: "checklist", widget: "list", field: { label: "Point", name: "point", widget: "string" } }
+              - { label: "Your name (on the small card)", name: "name", widget: "string" }
+              - { label: "Your title (on the small card)", name: "role", widget: "string" }
               - { label: "Button text", name: "button", widget: "string" }
-              - { label: "Portrait photo", name: "image", widget: "image" }
-          - label: "Human Design section"
+              - { label: "Photo", name: "image", widget: "image" }
+          - label: "3 · What is Human Design"
             name: "human_design"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Subtitle", name: "sub", widget: "text" }
+              - { label: "Title", name: "heading", widget: "string" }
+              - { label: "Sentence under the title", name: "sub", widget: "text" }
               - { label: "Photo", name: "image", widget: "image" }
-              - label: "Cards"
+              - label: "The three small cards"
                 name: "cards"
                 widget: "list"
+                collapsed: true
                 fields:
-                  - { label: "Icon symbol", name: "icon", widget: "string", hint: "A single symbol, e.g. ◐ ◆ ✳" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Text", name: "text", widget: "text" }
-          - label: "Services"
+                  - { label: "Symbol", name: "icon", widget: "string", hint: "One symbol, e.g. ◐ ◆ ✳ ❋ ☾" }
+                  - { label: "Card title", name: "title", widget: "string" }
+                  - { label: "Card text", name: "text", widget: "text" }
+          - label: "4 · My services"
             name: "services"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Subtitle", name: "sub", widget: "text" }
-              - label: "Service cards"
+              - { label: "Title", name: "heading", widget: "string" }
+              - { label: "Sentence under the title", name: "sub", widget: "text" }
+              - label: "Service cards (you can add or remove)"
                 name: "items"
                 widget: "list"
+                collapsed: true
                 fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "text", widget: "text" }
-                  - { label: "Bullet points", name: "bullets", widget: "list", field: { label: "Bullet", name: "bullet", widget: "string" } }
-                  - { label: "Highlight as 'Most popular'", name: "featured", widget: "boolean", default: false }
-          - label: "Areas of focus (tags)"
+                  - { label: "Service name", name: "title", widget: "string" }
+                  - { label: "Short description", name: "text", widget: "text" }
+                  - { label: "Three bullet points", name: "bullets", widget: "list", field: { label: "Point", name: "bullet", widget: "string" } }
+                  - { label: "Show a gold 'Most popular' ribbon?", name: "featured", widget: "boolean", default: false }
+          - label: "5 · Areas we work on (the little pills)"
             name: "focus_tags"
             widget: "list"
             collapsed: true
-            field: { label: "Tag", name: "tag", widget: "string" }
-          - label: "How it works (3 steps)"
+            field: { label: "Topic", name: "tag", widget: "string" }
+          - label: "6 · How it works (3 steps)"
             name: "steps"
             widget: "list"
             collapsed: true
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
-          - label: "Testimonial"
+              - { label: "Step title", name: "title", widget: "string" }
+              - { label: "Step text", name: "text", widget: "text" }
+          - label: "7 · Client testimonial"
             name: "testimonial"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "The quote", name: "quote", widget: "text" }
               - { label: "Client name", name: "name", widget: "string" }
-              - { label: "Client role", name: "role", widget: "string" }
-          - label: "Green call-to-action band"
+              - { label: "Who they are", name: "role", widget: "string", hint: "e.g. Coaching client" }
+          - label: "8 · Green banner near the bottom"
             name: "cta"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Text", name: "text", widget: "string" }
+              - { label: "Title", name: "heading", widget: "string" }
+              - { label: "Sentence", name: "text", widget: "string" }
               - { label: "Button text", name: "button", widget: "string" }
-              - { label: "Background photo", name: "image", widget: "image" }
-          - label: "Contact"
+              - { label: "Background photo", name: "image", widget: "image", hint: "Best: a wide (landscape) photo. A dark green tint goes over it automatically." }
+          - label: "9 · Contact details"
             name: "contact"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Intro text", name: "intro", widget: "text" }
+              - { label: "Short intro sentence", name: "intro", widget: "text" }
               - { label: "Email address", name: "email", widget: "string" }
-              - { label: "Instagram handle", name: "instagram", widget: "string", hint: "Including the @, e.g. @reflecting_journeys" }
+              - { label: "Instagram", name: "instagram", widget: "string", hint: "With the @, e.g. @reflecting_journeys" }
               - { label: "Location line", name: "location", widget: "string" }
-          - label: "Footer"
+          - label: "10 · Footer"
             name: "footer"
             widget: "object"
             collapsed: true
             fields:
-              - { label: "Tagline", name: "tagline", widget: "text" }
+              - { label: "Short tagline", name: "tagline", widget: "text" }
