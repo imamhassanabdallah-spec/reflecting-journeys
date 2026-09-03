@@ -86,6 +86,7 @@
   }
 
   /* ---------- Testimonials carousel ---------- */
+  function initCarousels() {
   doc.querySelectorAll('[data-carousel]').forEach((root) => {
     const track = root.querySelector('[data-carousel-track]');
     const slides = Array.from(root.querySelectorAll('.carousel__slide'));
@@ -140,7 +141,83 @@
 
     render();
   });
+  }
+
+  /* ---------- CMS content injection ----------
+     Reads content/site.json (edited via the Decap CMS at /admin) and
+     overrides the inline defaults. The page is fully readable without JS;
+     this simply lets Laura update copy, contact details and testimonials.
+     Lightweight formatting: *word* -> italic, **word** -> bold, line breaks. */
+  async function applyCMS() {
+    let data;
+    try {
+      const res = await fetch('content/site.json', { cache: 'no-store' });
+      if (!res.ok) return;
+      data = await res.json();
+    } catch (e) { return; }
+
+    const get = (path) => path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), data);
+    const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const md = (s) => esc(s)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+    const c = data.contact || {};
+
+    // Page-specific fields: [data-cms="path.to.field"]
+    doc.querySelectorAll('[data-cms]').forEach((el) => {
+      const v = get(el.getAttribute('data-cms'));
+      if (v != null) el.innerHTML = md(v);
+    });
+
+    // Footer contact links (email, WhatsApp, Instagram) — on every page
+    const fl = doc.querySelectorAll('.site-footer__connect .site-footer__contact');
+    if (fl[0] && c.email) { fl[0].href = 'mailto:' + c.email; fl[0].textContent = c.email; }
+    if (fl[1] && c.whatsapp_url) { fl[1].href = c.whatsapp_url; fl[1].textContent = 'WhatsApp · ' + c.whatsapp_display; }
+    if (fl[2] && c.instagram_url) { fl[2].href = c.instagram_url; fl[2].textContent = 'Instagram · ' + c.instagram_handle; }
+    const fTag = doc.querySelector('.site-footer__tag');
+    if (fTag && data.footer && data.footer.tagline) fTag.innerHTML = md(data.footer.tagline);
+    const fLoc = doc.querySelector('.site-footer__loc');
+    if (fLoc && c.location) fLoc.textContent = c.location;
+
+    // Contact page: contact list (email, WhatsApp, Instagram, location)
+    const cl = doc.querySelectorAll('.contact-list .contact-list__value');
+    if (cl.length) {
+      if (cl[0] && c.email) { cl[0].href = 'mailto:' + c.email; cl[0].textContent = c.email; }
+      if (cl[1] && c.whatsapp_url) { cl[1].href = c.whatsapp_url; cl[1].textContent = c.whatsapp_display; }
+      if (cl[2] && c.instagram_url) { cl[2].href = c.instagram_url; cl[2].textContent = c.instagram_handle; }
+      if (cl[3] && c.location) { cl[3].textContent = c.location; }
+    }
+    const waBtn = doc.querySelector('.contact-cta .btn');
+    if (waBtn && c.whatsapp_url) waBtn.href = c.whatsapp_url;
+
+    // "Book a call" section (home + service pages)
+    if (data.cta) {
+      const t = doc.querySelector('.booking-cta__title'); if (t && data.cta.title) t.textContent = data.cta.title;
+      const l = doc.querySelector('.booking-cta__lead'); if (l && data.cta.lead) l.innerHTML = md(data.cta.lead);
+      const b = doc.querySelector('.booking-cta__actions .btn'); if (b && data.cta.button) b.textContent = data.cta.button;
+    }
+
+    // Testimonials — rebuild the carousel slides
+    const track = doc.querySelector('[data-carousel-track]');
+    if (track && Array.isArray(data.testimonials) && data.testimonials.length) {
+      track.innerHTML = data.testimonials.map((t, i) =>
+        '<li class="carousel__slide" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + data.testimonials.length + '">' +
+          '<figure class="testimonial">' +
+            '<blockquote class="testimonial__quote font-display">' + md(t.quote) + '</blockquote>' +
+            '<figcaption class="testimonial__by">' +
+              '<span class="testimonial__initials">' + esc(t.initials) + '</span>' +
+              '<span class="testimonial__role">' + esc(t.role) + '</span>' +
+            '</figcaption>' +
+          '</figure>' +
+        '</li>'
+      ).join('');
+    }
+  }
 
   /* ---------- Current year ---------- */
   doc.querySelectorAll('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+
+  // Apply editable content, then start the carousel on the (possibly rebuilt) slides
+  applyCMS().finally(initCarousels);
 })();

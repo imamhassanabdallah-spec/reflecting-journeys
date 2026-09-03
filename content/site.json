@@ -1,129 +1,59 @@
 {
   "contact": {
-    "intro": "Send a message and I'll get back to you within 1–2 working days. Or reach out directly:",
-    "email": "hello@reflectingjourneys.com",
-    "instagram": "@reflecting_journeys",
+    "email": "laura@reflectingjourneys.com",
+    "whatsapp_display": "+961 76 560 093",
+    "whatsapp_url": "https://wa.me/96176560093",
+    "instagram_handle": "@reflecting_journeyss",
+    "instagram_url": "https://instagram.com/reflecting_journeyss",
     "location": "Beirut, Lebanon · Online worldwide"
   },
-  "focus_tags": [
-    "Purpose & life alignment",
-    "Emotional well-being",
-    "Identity & beliefs",
-    "Business & career",
-    "Relationships",
-    "Mind–body connection"
-  ],
-  "steps": [
-    {
-      "title": "Book your free call",
-      "text": "A relaxed 30-minute conversation. We talk about where you are and what you're looking for."
-    },
-    {
-      "title": "Get your plan",
-      "text": "I suggest the right mix of coaching, Reiki or readings — with clear expectations and pricing upfront."
-    },
-    {
-      "title": "Begin your journey",
-      "text": "We meet online or in Beirut, at your pace. You stay in the driver's seat the whole way."
-    }
-  ],
-  "about": {
-    "heading": "Your guide to alignment",
-    "p1": "I'm Laura — an integrative coach and energy healing practitioner based in Beirut. My work brings together **Human Design**, **Reiki** and intuitive tools like tarot to help you understand how you're uniquely wired, release what's holding you back, and move forward with confidence.",
-    "p2": "No jargon, no one-size-fits-all formulas. Just a grounded, personal process built around your energy, your goals and your life.",
-    "checklist": [
-      "A practical approach to spiritual tools",
-      "Personalised sessions — never a script",
-      "A safe, judgment-free space"
-    ],
-    "name": "Laura Brambilla",
-    "role": "Founder · Coach · Reiki Practitioner",
-    "button": "Start With a Free Call",
-    "image": "images/uploads/laura-about.jpg"
-  },
-  "human_design": {
-    "heading": "What is Human Design?",
-    "sub": "Think of it as your energetic blueprint — a map of how you're designed to make decisions, use your energy and interact with the world.",
-    "image": "images/uploads/d94eb87f-e3dc-4cf8-a51c-ddd0500085dd.jpg",
-    "cards": [
-      {
-        "icon": "◐",
-        "title": "Know your type",
-        "text": "Discover how your energy naturally works — and why forcing yourself into someone else's strategy never felt right."
-      },
-      {
-        "icon": "◆",
-        "title": "Trust your decisions",
-        "text": "Learn your inner authority: a reliable, personal way to make choices without second-guessing everything."
-      },
-      {
-        "icon": "✳",
-        "title": "Live it, practically",
-        "text": "We translate your chart into everyday actions — career, relationships, boundaries — not abstract theory."
-      }
-    ]
-  },
-  "cta": {
-    "heading": "Ready to discover your path?",
-    "text": "The first step is a free, no-pressure 30-minute discovery call.",
-    "button": "Book Your Free Call",
-    "image": "images/uploads/laura-journey.jpg"
-  },
-  "hero": {
-    "eyebrow": "Human Design · Coaching · Energy Healing",
-    "headline": "Bridge the gap between the *practical* and the *energetic*.",
-    "lead": "Integrative coaching grounded in Human Design and Reiki — so you can make real-life decisions that feel aligned, clear and truly yours.",
-    "cta_primary": "Book Your Free 30-Minute Call",
-    "cta_secondary": "Explore Services",
-    "bullets": [
-      "Online worldwide & in-person in Beirut",
-      "Sessions in English & Italian",
-      "No pressure — the first call is free"
-    ],
-    "image": "images/uploads/laura-hero.jpg"
-  },
   "footer": {
-    "tagline": "Human Design coaching & energy healing.\nBeirut · Online worldwide."
+    "tagline": "Not a journey to become someone new.\nA journey back to yourself."
+  },
+  "home": {
+    "hero_eyebrow": "Human Design · Reiki · Coaching",
+    "hero_lead": "Not a journey to become someone new. *A journey back to yourself.*",
+    "beirut_eyebrow": "From Beirut",
+    "beirut_quote": "A crack isn't a flaw.\nIt's an *opening*, an opportunity,\na new beginning.",
+    "beirut_p1": "From Beirut — a city of profound resilience that has learned to rise from its fractures — I offer you a living testament to a simple truth: **the most powerful light comes from the cracks.**",
+    "beirut_p2": "Light doesn't arrive in spite of ruptures. It pours through them.",
+    "beirut_p3": "Your messy, broken, uncertain places aren't the end of your story. They are where your awareness deepens, your strength enters, and your body re-learns — free from conditioning and energetic blockages.",
+    "beirut_close": "It is from your cracks that you discover your deepest clarity. *Let's discover yours.*",
+    "meet_p1": "Reflecting Journeys is born from more than twenty years of global experience — as a coach, entrepreneur, consultant and humanitarian worker across projects in psychosocial support, education, peacebuilding and conflict resolution.",
+    "meet_p2": "Originally from Italy and now anchored in Beirut, Laura weaves together Western education and Eastern philosophy into one integrative practice. As a **Reflector** in Human Design — the rarest type, just 1% of people — she becomes your mirror, reflecting your own energy back to you with clarity and compassion.",
+    "why_p1": "Energy therapy helps you reconnect with yourself beneath stress, conditioning, emotional overwhelm, survival mode and self-protective patterns.",
+    "why_p2": "Over time, you begin to understand your emotions, your body's signals, your needs and your boundaries. Decisions become clearer and more aligned — because they come from a deeper connection to yourself, not from overthinking, fear or external expectations."
   },
   "services": {
-    "heading": "Integrative coaching for a holistic life",
-    "sub": "Every journey starts with a free discovery call so we can find the right path for you.",
-    "items": [
-      {
-        "title": "Human Design Coaching",
-        "text": "One-to-one coaching guided by your Human Design chart. Clarity on purpose, career, identity and the patterns that keep repeating.",
-        "bullets": [
-          "Full chart reading & walkthrough",
-          "Single sessions or ongoing packages",
-          "Online or in person"
-        ],
-        "featured": false
-      },
-      {
-        "title": "Reiki Energy Healing",
-        "text": "Gentle, deeply restorative energy work to release tension and stress, restore balance and reconnect body and mind.",
-        "bullets": [
-          "60-minute sessions",
-          "In-person in Beirut or distance Reiki",
-          "Perfect alongside coaching"
-        ],
-        "featured": true
-      },
-      {
-        "title": "Tarot Guidance",
-        "text": "Intuitive readings used as a reflective tool — to surface what you already sense and open up honest, useful conversations.",
-        "bullets": [
-          "Focused single-question readings",
-          "Deeper life-theme spreads",
-          "Standalone or within coaching"
-        ],
-        "featured": false
-      }
-    ]
+    "coaching_desc": "Deep introspection that connects mind, body and emotion — so you stop running on autopilot and start living from alignment.",
+    "human_design_desc": "Your unique energetic blueprint — a practical map of how you're designed to make decisions and use your energy.",
+    "reiki_desc": "Gentle Japanese energy work to release tension, rebalance your centres and let your body regenerate.",
+    "coaching_lead": "A deeper kind of coaching — where mind and body meet, and life begins to unfold in ways you couldn't have consciously planned.",
+    "human_design_lead": "A unique energetic blueprint — like a fingerprint or a genetic code, entirely your own.",
+    "reiki_lead": "Energy moves. Sometimes it gets stuck — from stress, emotion, exhaustion. Reiki helps it flow again."
   },
-  "testimonial": {
-    "quote": "Working with Laura gave me a completely new understanding of how I operate. The sessions were practical, warm and surprisingly precise — I left every one with something concrete to apply.",
-    "name": "Manuele Acconcia",
-    "role": "Coaching client"
-  }
+  "about": {
+    "lead": "More than twenty years of global experience — woven into one cohesive practice that bridges mind, body and energy.",
+    "story_p1": "For over two decades I have lived and worked as a coach, entrepreneur, consultant and humanitarian worker across the globe — on projects in psychosocial support, education, peacebuilding and conflict resolution.",
+    "story_p2": "Originally from Italy, my anchor is now Beirut. Living here has taught me, in the most visceral way, that resilience isn't about being unbreakable — it's about the light that comes through the cracks. This is the core truth I bring into my work.",
+    "story_p3": "My education reflects a global path: studies in Italy and the United Kingdom, professional certifications in the United States and Malaysia, and teachings drawn from Indian and Japanese wisdom traditions.",
+    "story_p4": "This synthesis of **Western education and Eastern philosophy** forms the backbone of my integrative practice — a space where clients feel truly seen, safe, and empowered to embrace every part of their story, especially the fractured ones."
+  },
+  "cta": {
+    "title": "Ready to discover your path?",
+    "lead": "The first step is a free 30-minute discovery call. A relaxed conversation to explore where you are, the support you're looking for, and how a Reflecting Journey could take shape.",
+    "button": "Book your free discovery call"
+  },
+  "testimonials": [
+    {
+      "quote": "Laura guided me and helped me almost without me noticing it; her way is gentle and sensitive. She asked the right questions, gave me the time and the space to develop my thoughts, and made me feel safe and empowered. She opened my eyes to things that were already right in front of me. Now, I feel I'm living another life — with the tools and the capability to continue my growth on my own.",
+      "initials": "M.A.",
+      "role": "Coaching & Reiki client"
+    },
+    {
+      "quote": "Working with Laura has been an eye-opening and soul-refreshing experience. She is an incredible healer who helped me dive deep into my emotional and energetic blocks. Her coaching unravels the inner self layer by layer, uncovering answers that were always there but never quite so clear. By integrating Reiki, she provides a unique look at how your energy handles outside stressors. I've come away with a much deeper understanding of myself.",
+      "initials": "R.B.K.",
+      "role": "Coaching & Reiki client"
+    }
+  ]
 }
