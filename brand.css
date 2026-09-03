@@ -48,25 +48,45 @@
   .rrr-triptych .poster-figure { scroll-snap-align: center; }
 }
 
-/* ---- Butterfly series: horizontal editorial scroll ---- */
-.butterfly-story { padding-block: var(--section-pad); }
+/* ---- Butterfly series: editorial horizontal carousel ---- */
+.butterfly-story { padding-block: clamp(3.5rem, 6vw, 5rem); }
 .butterfly-strip {
   display: grid; grid-auto-flow: column;
-  grid-auto-columns: clamp(230px, 26vw, 330px);
+  grid-auto-columns: 86vw;                 /* mobile: ~1 poster at a time */
   gap: clamp(1rem, 2vw, 1.6rem);
   overflow-x: auto; scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 0.5rem clamp(1.25rem, 5vw, 3rem) 1.5rem;
+  -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+  padding: 0.5rem clamp(1.25rem, 5vw, 3rem) 0.75rem;
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  scrollbar-width: thin;
+  scrollbar-width: none; cursor: grab;
 }
-.butterfly-strip::-webkit-scrollbar { height: 6px; }
-.butterfly-strip::-webkit-scrollbar-thumb { background: var(--line-on-dark); border-radius: 3px; }
+.butterfly-strip.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.butterfly-strip::-webkit-scrollbar { display: none; }
+@media (min-width: 700px)  { .butterfly-strip { grid-auto-columns: 46vw; } }   /* ~2 posters */
+@media (min-width: 1100px) { .butterfly-strip { grid-auto-columns: 34rem; } }  /* ~2–2.5 posters, text readable */
 .butterfly-strip .poster-figure {
-  max-width: none; aspect-ratio: 4 / 5; scroll-snap-align: center;
-  border-radius: var(--radius);
+  max-width: none; width: 100%; aspect-ratio: 4 / 5;
+  scroll-snap-align: center; border-radius: var(--radius);
+  background: transparent; box-shadow: none;
 }
-.butterfly-hint { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-on-dark-mute); margin-top: 0.6rem; }
+/* Show the full poster — never crop the embedded text */
+.butterfly-strip .poster-figure img { object-fit: contain; }
+
+/* Controls row (arrows + hint) */
+.butterfly-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.25rem; margin-top: 1.4rem;
+}
+.butterfly-hint {
+  font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-on-dark-mute);
+}
+.butterfly-hint--mobile { display: none; }
+@media (max-width: 699px) {
+  .butterfly-arrow { display: none; }            /* swipe on mobile */
+  .butterfly-hint--desktop { display: none; }
+  .butterfly-hint--mobile { display: inline; }
+}
 
 /* ---- Full-bleed brand band (e.g. logo lockup poster) ---- */
 .brand-band {

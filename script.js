@@ -215,6 +215,27 @@
     }
   }
 
+  /* ---------- Butterfly carousel (arrows + drag-to-scroll) ---------- */
+  const bfTrack = doc.querySelector('[data-bf-track]');
+  if (bfTrack) {
+    const step = () => {
+      const fig = bfTrack.querySelector('.poster-figure');
+      const gap = parseFloat(getComputedStyle(bfTrack).columnGap) || 16;
+      return (fig ? fig.offsetWidth : bfTrack.clientWidth * 0.6) + gap;
+    };
+    const prev = doc.querySelector('[data-bf-prev]');
+    const next = doc.querySelector('[data-bf-next]');
+    prev && prev.addEventListener('click', () => bfTrack.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    next && next.addEventListener('click', () => bfTrack.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }));
+    // mouse drag-to-scroll
+    let down = false, startX = 0, startScroll = 0;
+    bfTrack.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = true; startX = e.clientX; startScroll = bfTrack.scrollLeft; bfTrack.classList.add('is-dragging'); });
+    bfTrack.addEventListener('pointermove', (e) => { if (!down) return; bfTrack.scrollLeft = startScroll - (e.clientX - startX); });
+    const endDrag = () => { down = false; bfTrack.classList.remove('is-dragging'); };
+    bfTrack.addEventListener('pointerup', endDrag);
+    bfTrack.addEventListener('pointerleave', endDrag);
+  }
+
   /* ---------- Current year ---------- */
   doc.querySelectorAll('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
 

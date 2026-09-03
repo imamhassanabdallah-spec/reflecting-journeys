@@ -264,14 +264,23 @@
         <h2 id="butterfly-title" class="section-heading__title">You, unedited</h2>
       </div>
     </div>
-    <div class="butterfly-strip" data-reveal>
+    <div class="butterfly-strip" data-reveal data-bf-track>
       <figure class="poster-figure"><img src="images/brand/butterfly-1-notbroken.webp" alt="You are not broken. You never were." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-2-you.webp" alt="You, who have always moved on a path that only you could see." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-3-walls.webp" alt="The world builds walls called normal — but a garden does not bloom in uniform rows." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-4-mold.webp" alt="We are not all meant to fit neatly into the mold." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-5-so.webp" alt="Stay beautifully out of step. Remain unapologetically you." loading="lazy" decoding="async" /></figure>
     </div>
-    <p class="butterfly-hint" style="text-align:center">Swipe to read →</p>
+    <div class="butterfly-controls">
+      <button class="carousel__btn butterfly-arrow" data-bf-prev aria-label="Previous">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="butterfly-hint butterfly-hint--desktop">Scroll to read →</span>
+      <span class="butterfly-hint butterfly-hint--mobile">Swipe to read →</span>
+      <button class="carousel__btn butterfly-arrow" data-bf-next aria-label="Next">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
   </section>
 
   <!-- ============ 6 · MEET LAURA ============ -->
