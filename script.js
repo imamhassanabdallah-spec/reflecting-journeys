@@ -1,223 +1,146 @@
-// Mobile navigation toggle
-const navToggle = document.getElementById("nav-toggle");
-const siteNav = document.getElementById("site-nav");
-
-navToggle.addEventListener("click", () => {
-  const open = siteNav.classList.toggle("open");
-  document.body.classList.toggle("nav-open", open);
-  navToggle.setAttribute("aria-expanded", String(open));
-  navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-});
-
-// Close the mobile menu after tapping a link
-siteNav.addEventListener("click", (e) => {
-  if (e.target.tagName === "A" && siteNav.classList.contains("open")) {
-    siteNav.classList.remove("open");
-    document.body.classList.remove("nav-open");
-    navToggle.setAttribute("aria-expanded", "false");
-  }
-});
-
-// Scrollspy: highlight the nav link for the section in view
-const spyLinks = Array.from(
-  document.querySelectorAll('.site-nav a[href^="#"]:not(.btn)')
-);
-const spyTargets = spyLinks
-  .map((link) => document.querySelector(link.getAttribute("href")))
-  .filter(Boolean);
-if ("IntersectionObserver" in window && spyTargets.length) {
-  const spy = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          spyLinks.forEach((l) =>
-            l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id)
-          );
-        }
-      }
-    },
-    { rootMargin: "-35% 0px -55% 0px" }
-  );
-  spyTargets.forEach((t) => spy.observe(t));
-}
-
-// Reveal-on-scroll animations
-const revealEls = document.querySelectorAll(".reveal");
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      }
-    },
-    { threshold: 0.12 }
-  );
-  revealEls.forEach((el) => observer.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add("visible"));
-}
-
-// Keep the footer year current
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-// Header shadow once the page is scrolled
-const header = document.querySelector(".site-header");
-const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 12);
-window.addEventListener("scroll", onScroll, { passive: true });
-onScroll();
-
 /* ============================================================
-   CMS content hydration
-   Loads content/site.json (edited via /admin) and fills the
-   page. If the file can't load (e.g. opened via file://), the
-   text baked into index.html simply remains.
+   REFLECTING JOURNEYS — interactions
+   Progressive enhancement only. The site is fully readable
+   without JS; this adds motion, the mobile menu, and the
+   scroll-reveal choreography.
    ============================================================ */
+(function () {
+  'use strict';
+  const doc = document;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Escape HTML, then allow **bold** and *italic* markers
-function rich(value) {
-  const div = document.createElement("div");
-  div.textContent = value;
-  return div.innerHTML
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-    .replace(/\n/g, "<br/>");
-}
-
-function setHTML(selector, value) {
-  const el = document.querySelector(selector);
-  if (el && value != null) el.innerHTML = rich(value);
-}
-
-// Serve images through Netlify's image CDN (resized + WebP) when live.
-// Falls back to the original file locally or if the CDN request fails.
-function optimizedSrc(src, width) {
-  if (!src) return src;
-  const local = ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
-  if (local || window.location.protocol === "file:") return src;
-  const path = "/" + src.replace(/^\//, "");
-  return `/.netlify/images?url=${encodeURIComponent(path)}&w=${width}&q=75&fm=webp`;
-}
-
-function setImage(selector, src, width = 1000) {
-  const el = document.querySelector(selector);
-  if (el && src) {
-    el.onerror = () => { el.onerror = null; el.src = src; };
-    el.src = optimizedSrc(src, width);
-    el.parentElement.classList.remove("img-missing");
-  }
-}
-
-function setList(selector, items, renderItem) {
-  const el = document.querySelector(selector);
-  if (el && Array.isArray(items) && items.length) {
-    el.innerHTML = items.map(renderItem).join("");
-  }
-}
-
-async function hydrateContent() {
-  let c;
-  try {
-    const res = await fetch("content/site.json", { cache: "no-store" });
-    if (!res.ok) return;
-    c = await res.json();
-  } catch {
-    return; // keep baked-in content
+  /* ---------- Header: scrolled state ---------- */
+  const header = doc.querySelector('[data-header]');
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  if (c.hero) {
-    setHTML(".hero-copy .eyebrow", c.hero.eyebrow);
-    setHTML(".hero-copy h1", c.hero.headline);
-    setHTML(".hero-copy .lead", c.hero.lead);
-    setHTML(".hero-actions .btn-primary", c.hero.cta_primary);
-    setHTML(".hero-actions .btn-ghost", c.hero.cta_secondary);
-    setList(".hero-trust", c.hero.bullets, (b) => `<li>${rich(b)}</li>`);
-    setImage(".hero-photo img", c.hero.image);
+  /* ---------- Mobile navigation ---------- */
+  const toggle = doc.querySelector('[data-nav-toggle]');
+  const nav = doc.getElementById('primary-nav');
+  if (toggle && nav) {
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      nav.classList.toggle('is-open', open);
+      doc.body.classList.toggle('nav-open', open);
+    };
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    // Close on link tap / Escape / resize to desktop
+    nav.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
+    doc.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 920) setOpen(false); });
   }
 
-  if (c.about) {
-    setHTML(".about-copy h2", c.about.heading);
-    setHTML("#about-p1", c.about.p1);
-    setHTML("#about-p2", c.about.p2);
-    setList(".checklist", c.about.checklist, (p) => `<li>${rich(p)}</li>`);
-    setHTML(".about-badge strong", c.about.name);
-    setHTML(".about-badge span", c.about.role);
-    setHTML(".about-copy .btn", c.about.button);
-    setImage(".about-frame img", c.about.image);
+  /* ---------- Services dropdown: sync aria (desktop) ---------- */
+  const subGroup = doc.querySelector('[data-submenu]');
+  if (subGroup) {
+    const subToggle = subGroup.querySelector('.nav__sub-toggle');
+    const sync = (open) => subToggle && subToggle.setAttribute('aria-expanded', String(open));
+    subGroup.addEventListener('mouseenter', () => sync(true));
+    subGroup.addEventListener('mouseleave', () => sync(false));
+    subGroup.addEventListener('focusin', () => sync(true));
+    subGroup.addEventListener('focusout', (e) => { if (!subGroup.contains(e.relatedTarget)) sync(false); });
   }
 
-  if (c.human_design) {
-    setHTML("#human-design h2", c.human_design.heading);
-    setHTML("#human-design .section-sub", c.human_design.sub);
-    setImage(".hd-frame img", c.human_design.image);
-    setList("#human-design .card-grid", c.human_design.cards, (card) => `
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">${rich(card.icon || "◆")}</div>
-        <h3>${rich(card.title)}</h3>
-        <p>${rich(card.text)}</p>
-      </article>`);
-  }
-
-  if (c.services) {
-    setHTML("#services .section-head h2", c.services.heading);
-    setHTML("#services .section-sub", c.services.sub);
-    setList("#services .card-grid", c.services.items, (s) => `
-      <article class="card service-card${s.featured ? " featured" : ""}">
-        ${s.featured ? '<span class="pill">Most popular</span>' : ""}
-        <h3>${rich(s.title)}</h3>
-        <p>${rich(s.text)}</p>
-        <ul class="service-list">
-          ${(s.bullets || []).map((b) => `<li>${rich(b)}</li>`).join("")}
-        </ul>
-        <a href="#contact" class="text-link">Book a session →</a>
-      </article>`);
-  }
-
-  setList(".focus-tags", c.focus_tags, (t) => `<li>${rich(t)}</li>`);
-
-  setList(".steps", c.steps, (s, i) => `
-    <li>
-      <span class="step-num">${i + 1}</span>
-      <h3>${rich(s.title)}</h3>
-      <p>${rich(s.text)}</p>
-    </li>`);
-
-  if (c.testimonial) {
-    setHTML(".testimonial blockquote", `“${c.testimonial.quote}”`);
-    setHTML(".testimonial figcaption strong", c.testimonial.name);
-    setHTML(".testimonial figcaption span", c.testimonial.role);
-  }
-
-  if (c.cta) {
-    setHTML(".cta-inner h2", c.cta.heading);
-    setHTML(".cta-inner p", c.cta.text);
-    setHTML(".cta-inner .btn", c.cta.button);
-    if (c.cta.image) {
-      document.querySelector(".cta-band").style.background =
-        `linear-gradient(135deg, rgba(38,58,49,0.92), rgba(62,92,80,0.88)), ` +
-        `url("${optimizedSrc(c.cta.image, 1600)}") center 30% / cover no-repeat`;
+  /* ---------- Reveal on scroll ---------- */
+  const revealEls = doc.querySelectorAll('[data-reveal], [data-stagger]');
+  if (revealEls.length) {
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      revealEls.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.getAttribute('data-reveal-delay');
+            if (delay) el.style.setProperty('--reveal-delay', delay);
+            el.classList.add('is-in');
+            obs.unobserve(el);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      revealEls.forEach((el) => io.observe(el));
     }
   }
 
-  if (c.contact) {
-    setHTML("#contact-intro", c.contact.intro);
-    const handle = (c.contact.instagram || "").replace(/^@/, "");
-    setList(".contact-list", [0], () => `
-      <li><span class="contact-label">Email</span> <a href="mailto:${c.contact.email}">${c.contact.email}</a></li>
-      <li><span class="contact-label">Instagram</span> <a href="https://instagram.com/${handle}" target="_blank" rel="noopener">${rich(c.contact.instagram)}</a></li>
-      <li><span class="contact-label">Location</span> ${rich(c.contact.location)}</li>`);
-    const form = document.querySelector(".contact-form");
-    if (form) form.setAttribute("action", `mailto:${c.contact.email}`);
-    const footerMail = document.querySelector('.footer-social a[href^="mailto:"]');
-    if (footerMail) footerMail.href = `mailto:${c.contact.email}`;
-    const footerInsta = document.querySelector('.footer-social a[href*="instagram"]');
-    if (footerInsta) footerInsta.href = `https://instagram.com/${handle}`;
+  /* ---------- Journey: scroll-linked progress line ---------- */
+  const jTrack = doc.querySelector('[data-journey]');
+  if (jTrack && !reduceMotion) {
+    let ticking = false;
+    const update = () => {
+      const r = jTrack.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // progress from when track top reaches 70% of viewport to when bottom reaches 40%
+      const start = vh * 0.7, end = vh * 0.4;
+      const p = (start - r.top) / (r.height - (vh - end) + (start - end) || 1);
+      jTrack.style.setProperty('--jp', String(Math.max(0, Math.min(1, p))));
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
 
-  if (c.footer) setHTML(".footer-brand p", c.footer.tagline);
-}
+  /* ---------- Testimonials carousel ---------- */
+  doc.querySelectorAll('[data-carousel]').forEach((root) => {
+    const track = root.querySelector('[data-carousel-track]');
+    const slides = Array.from(root.querySelectorAll('.carousel__slide'));
+    const prev = root.querySelector('[data-carousel-prev]');
+    const next = root.querySelector('[data-carousel-next]');
+    const dotsWrap = root.querySelector('[data-carousel-dots]');
+    if (!track || slides.length === 0) return;
+    let index = 0;
 
-hydrateContent();
+    // Build dots
+    const dots = slides.map((_, i) => {
+      const b = doc.createElement('button');
+      b.className = 'carousel__dot';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      b.addEventListener('click', () => go(i));
+      dotsWrap && dotsWrap.appendChild(b);
+      return b;
+    });
+
+    const render = () => {
+      track.style.transform = 'translateX(' + (-index * 100) + '%)';
+      slides.forEach((s, i) => s.setAttribute('aria-hidden', String(i !== index)));
+      dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === index)));
+    };
+    const go = (i) => { index = (i + slides.length) % slides.length; render(); };
+    const nextSlide = () => go(index + 1);
+    const prevSlide = () => go(index - 1);
+
+    prev && prev.addEventListener('click', prevSlide);
+    next && next.addEventListener('click', nextSlide);
+
+    // Keyboard
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { nextSlide(); }
+      else if (e.key === 'ArrowLeft') { prevSlide(); }
+    });
+
+    // Swipe / drag
+    let x0 = null;
+    const start = (x) => { x0 = x; };
+    const end = (x) => {
+      if (x0 === null) return;
+      const dx = x - x0;
+      if (Math.abs(dx) > 45) { dx < 0 ? nextSlide() : prevSlide(); }
+      x0 = null;
+    };
+    track.addEventListener('touchstart', (e) => start(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchend', (e) => end(e.changedTouches[0].clientX), { passive: true });
+    track.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') start(e.clientX); });
+    track.addEventListener('pointerup', (e) => { if (e.pointerType === 'mouse') end(e.clientX); });
+
+    render();
+  });
+
+  /* ---------- Current year ---------- */
+  doc.querySelectorAll('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+})();
