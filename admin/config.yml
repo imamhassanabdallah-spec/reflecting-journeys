@@ -91,6 +91,45 @@ collections:
               - { label: "Sentence", name: "lead", widget: "text" }
               - { label: "Button text", name: "button", widget: "string" }
           # --------------------------------------------------------
+          - label: "⑧ Website Images"
+            name: "images"
+            widget: "object"
+            collapsed: true
+            hint: "For each image you can upload a new file or choose an existing one, then Publish. The logo is not editable here."
+            fields:
+              - label: "Home page"
+                name: "home"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Hero image (top of home page)", name: "hero", widget: "image", required: false, media_library: { config: { multiple: false } } }
+                  - { label: "Meet Laura image", name: "meet", widget: "image", required: false }
+              - label: "Services (used on the home cards AND the service pages)"
+                name: "services"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Coaching image", name: "coaching", widget: "image", required: false }
+                  - { label: "Human Design image", name: "human_design", widget: "image", required: false }
+                  - { label: "Reiki image", name: "reiki", widget: "image", required: false }
+              - label: "About page"
+                name: "about"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "About — main image", name: "main", widget: "image", required: false }
+                  - { label: "About — second image", name: "second", widget: "image", required: false }
+              - label: "Butterfly / editorial (home)"
+                name: "butterfly"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Butterfly image 1", name: "b1", widget: "image", required: false }
+                  - { label: "Butterfly image 2", name: "b2", widget: "image", required: false }
+                  - { label: "Butterfly image 3", name: "b3", widget: "image", required: false }
+                  - { label: "Butterfly image 4", name: "b4", widget: "image", required: false }
+                  - { label: "Butterfly image 5", name: "b5", widget: "image", required: false }
+          # --------------------------------------------------------
           - label: "⑦ Testimonials (the carousel)"
             name: "testimonials"
             widget: "list"

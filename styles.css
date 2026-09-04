@@ -713,7 +713,10 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
      so a long menu + submenu is always fully reachable; body scroll locked. */
   .nav {
     position: fixed;
-    inset: 0;
+    top: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 100vh;            /* fallback */
+    height: 100dvh;           /* dynamic viewport — accounts for mobile browser chrome */
     z-index: var(--z-menu);
     display: flex;
     flex-direction: column;
@@ -768,8 +771,15 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
   }
 
   body.nav-open { overflow: hidden; }
-  /* keep the toggle (✕) readable over the dark drawer */
-  body.nav-open .site-header { color: var(--text-on-dark); background: transparent; border-color: transparent; box-shadow: none; }
+  /* keep the toggle (✕) readable over the dark drawer, AND remove backdrop-filter
+     while open — it makes .site-header a containing block for the fixed menu,
+     which was clipping the menu to the header's height. !important beats the
+     scrolled-header rule. */
+  body.nav-open .site-header {
+    color: var(--text-on-dark); background: transparent; border-color: transparent; box-shadow: none;
+    -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+  }
 }
 
 /* ============================================================

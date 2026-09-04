@@ -158,6 +158,12 @@
           if (v != null) el.innerHTML = md(v);
         });
 
+        // Editable images: [data-cms-img="images.home.hero"] -> sets the <img> src
+        doc.querySelectorAll('[data-cms-img]').forEach(function (el) {
+          var v = get(el.getAttribute('data-cms-img'));
+          if (v) el.setAttribute('src', v);
+        });
+
         var fl = doc.querySelectorAll('.site-footer__connect .site-footer__contact');
         if (fl[0] && c.email) { fl[0].href = 'mailto:' + c.email; fl[0].textContent = c.email; }
         if (fl[1] && c.whatsapp_url) { fl[1].href = c.whatsapp_url; fl[1].textContent = 'WhatsApp · ' + c.whatsapp_display; }

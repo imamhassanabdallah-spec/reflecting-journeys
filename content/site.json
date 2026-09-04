@@ -55,5 +55,27 @@
       "initials": "R.B.K.",
       "role": "Coaching & Reiki client"
     }
-  ]
+  ],
+  "images": {
+    "home": {
+      "hero": "images/uploads/laura-hero.jpg",
+      "meet": "images/uploads/laura-journey.jpg"
+    },
+    "services": {
+      "coaching": "images/uploads/laura-about.jpg",
+      "human_design": "images/uploads/laura-studio.jpg",
+      "reiki": "images/brand/energy-hand.webp"
+    },
+    "about": {
+      "main": "images/uploads/laura-journey.jpg",
+      "second": "images/brand/laura-reiki.webp"
+    },
+    "butterfly": {
+      "b1": "images/brand/butterfly-1-notbroken.webp",
+      "b2": "images/brand/butterfly-2-you.webp",
+      "b3": "images/brand/butterfly-3-walls.webp",
+      "b4": "images/brand/butterfly-4-mold.webp",
+      "b5": "images/brand/butterfly-5-so.webp"
+    }
+  }
 }
