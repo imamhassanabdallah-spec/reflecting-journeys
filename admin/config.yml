@@ -104,7 +104,7 @@ collections:
                 fields:
                   - { label: "Hero image (top of home page)", name: "hero", widget: "image", required: false, media_library: { config: { multiple: false } } }
                   - { label: "Meet Laura image", name: "meet", widget: "image", required: false }
-              - label: "Services (used on the home cards AND the service pages)"
+              - label: "Service page hero images (Coaching / Human Design / Reiki)"
                 name: "services"
                 widget: "object"
                 collapsed: true
