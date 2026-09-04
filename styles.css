@@ -769,6 +769,12 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
     min-width: 0; width: 100%; background: transparent; border: 0; box-shadow: none;
     padding: 0.1rem 0 0.6rem; color: var(--text-on-dark);
   }
+  /* The desktop dropdown's hover/open state applies transform: translate(-50%, 0)
+     globally — on a phone, tapping a service triggers :hover and shifts the whole
+     submenu LEFT. Neutralise it here (same specificity, later in source = wins). */
+  .nav__item-has-sub:hover .nav__sub,
+  .nav__item-has-sub:focus-within .nav__sub,
+  .nav__sub.is-open { transform: none; left: auto; }
   .nav__sub-label { color: var(--rj-honey); padding-left: 0.1rem; padding-block: 0.1rem 0.35rem; font-size: 0.64rem; }
   .nav__sub-link { padding-left: 0.1rem; padding-block: 0.42rem; gap: 0.7rem; }
   .nav__sub-link:hover { background: transparent; }
