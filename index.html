@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>document.documentElement.classList.add('js');</script>
   <title>Reflecting Journeys — Reflect, Reconnect, Realign</title>
   <meta name="description" content="A personalised wellness experience with Laura Brambilla, bringing together Human Design, Gendai Reiki and transformational coaching to help you reconnect with yourself and live with clarity and alignment. Beirut & online worldwide." />
   <link rel="canonical" href="https://reflecting-journeys.netlify.app/" />
@@ -21,15 +22,12 @@
   <link rel="apple-touch-icon" href="images/favicon.svg" />
   <meta name="theme-color" content="#3a4430" />
 
-  <!-- Fonts: Poppins (body) + Fraunces (temporary display fallback for Gamgote) -->
+  <!-- Fonts: Poppins (body) + Bodoni Moda (elegant display fallback for Gamgote) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="brand.css" />
-
-  <!-- Styles -->
-
 </head>
 <body class="has-hero">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -37,10 +35,6 @@
     <div class="site-header__inner container container--wide">
       <a class="logo" href="index.html" aria-label="Reflecting Journeys — home">
         <span class="logo__mark" aria-hidden="true"></span>
-        <span class="logo__word">
-          <span class="logo__word-top">Reflecting</span>
-          <span class="logo__word-bottom">Journeys</span>
-        </span>
       </a>
 
       <nav class="nav" id="primary-nav" aria-label="Primary">
@@ -82,164 +76,115 @@
 
   <main id="main">
 
-
-  <!-- ============ 1 · HERO ============ -->
+  <!-- ============ A · HERO ============ -->
   <section class="hero" data-hero>
     <div class="container hero__inner">
-      <p class="eyebrow is-centered hero__eyebrow" data-cms="home.hero_eyebrow">Human Design · Reiki · Coaching</p>
-      <h1 class="hero__title font-display">
-        <span class="ln">Reflect,</span>
-        <span class="ln">Reconnect,</span>
-        <span class="ln">Realign.</span>
-      </h1>
-      <p class="hero__lead" data-cms="home.hero_lead">Not a journey to become someone new. <em>A journey back to yourself.</em></p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#journey">Begin your journey</a>
-        <a class="btn btn--ghost" href="contact.html">Book a free call</a>
-      </div>
-    </div>
-    <span class="hero__cue" aria-hidden="true">
-      <span class="hero__cue-line"></span>
-      Scroll
-    </span>
-  </section>
-
-  <!-- ============ 2 · THE CRACK / BEIRUT ============ -->
-  <section class="section crack bg-deepest grain bloom bloom--left on-dark" aria-labelledby="crack-title" id="crack">
-    <div class="container">
-      <div class="crack__lead">
-        <span class="crack__line" aria-hidden="true"></span>
-        <p class="eyebrow" data-reveal data-cms="home.beirut_eyebrow">From Beirut</p>
-        <h2 id="crack-title" class="crack__quote font-display" data-reveal data-cms="home.beirut_quote">
-          A crack isn't a flaw.<br />It's an <em>opening</em>, an opportunity,<br />a new beginning.
-        </h2>
-      </div>
-
-      <div class="crack__body">
-        <figure class="editorial-image editorial-image--rounded crack__image" style="--ar: 4/5; --pos: 50% 50%"
-                data-reveal="mask">
-          <img src="images/brand/this-is-you.webp" alt="A single point of light in the dark — this is you" loading="lazy" decoding="async" />
-        </figure>
-        <div class="crack__text prose" data-reveal data-reveal-delay="0.1s">
-          <p data-cms="home.beirut_p1">From Beirut — a city of profound resilience that has learned to rise from its fractures — I offer you a living testament to a simple truth: <strong>the most powerful light comes from the cracks.</strong></p>
-          <p data-cms="home.beirut_p2">Light doesn't arrive in spite of ruptures. It pours through them.</p>
-          <p data-cms="home.beirut_p3">Your messy, broken, uncertain places aren't the end of your story. They are where your awareness deepens, your strength enters, and your body re-learns — free from conditioning and energetic blockages.</p>
-          <p class="crack__close" data-cms="home.beirut_close">It is from your cracks that you discover your deepest clarity. <em>Let's discover yours.</em></p>
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow">Human Design · Reiki · Coaching</p>
+        <h1 class="hero__title font-display">
+          <span class="ln">Reflect,</span>
+          <span class="ln">Reconnect,</span>
+          <span class="ln"><span class="accent">Realign.</span></span>
+        </h1>
+        <p class="hero__lead" data-cms="home.hero_lead">Not a journey to become someone new. <em>A journey back to yourself.</em></p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="contact.html">Book a free call</a>
+          <a class="btn btn--ghost" href="#path">Explore the journey</a>
         </div>
       </div>
+      <figure class="hero__figure">
+        <img src="images/uploads/laura-hero.jpg" alt="Laura Brambilla working in warm natural light on her balcony in Beirut" fetchpriority="high" decoding="async" />
+      </figure>
     </div>
   </section>
 
-  <!-- ============ 3 · REFLECT / RECONNECT / REALIGN ============ -->
-  <section class="section journey bg-deep grain on-dark" aria-labelledby="journey-title" id="journey">
-    <div class="container">
+  <!-- ============ B · MEET LAURA (short) ============ -->
+  <section class="section meet bg-cream" aria-labelledby="meet-title" id="meet-laura">
+    <div class="container meet__inner">
+      <figure class="meet__image is-zoom editorial-image editorial-image--rounded" style="--ar: 4/5; --pos: 50% 30%">
+        <img src="images/uploads/laura-journey.jpg" alt="Laura Brambilla — a portrait from her travels" loading="lazy" decoding="async" />
+        <figcaption class="meet__badge">
+          <span class="meet__badge-name">Laura Brambilla</span>
+          <span class="meet__badge-role">Reflector · Coach · Reiki Practitioner</span>
+        </figcaption>
+      </figure>
+
+      <div class="meet__text" data-reveal>
+        <p class="eyebrow">Meet Laura</p>
+        <h2 id="meet-title" class="meet__title">Your guide back to alignment</h2>
+        <p data-cms="home.meet_p1">Reflecting Journeys is born from more than twenty years of global experience — as a coach, entrepreneur, consultant and humanitarian worker across projects in psychosocial support, education and peacebuilding.</p>
+        <p data-cms="home.meet_p2">Originally from Italy and now anchored in Beirut, Laura weaves Western education and Eastern philosophy into one integrative practice. As a <strong>Reflector</strong> in Human Design — the rarest type, just 1% of people — she becomes your mirror, reflecting your own energy back with clarity and compassion.</p>
+        <a class="link" href="about.html">Read Laura's story <span class="link__arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ C · THE PATH — Reflect / Reconnect / Realign + services ============ -->
+  <section class="section path bg-deep grain on-dark" aria-labelledby="path-title" id="path">
+    <div class="container container--wide">
       <div class="section-heading is-centered" data-reveal>
         <p class="eyebrow is-centered">The Reflecting Journey</p>
-        <h2 id="journey-title" class="section-heading__title">Three movements back to yourself</h2>
-        <p class="section-heading__intro">One holistic path, working at every level — mind, mechanics and body — to guide you toward alignment.</p>
+        <h2 id="path-title" class="section-heading__title">Reflect · Reconnect · Realign</h2>
+        <p class="section-heading__intro">One holistic path — working with mind, energy and body. Three practices that stand beautifully on their own, and together guide you back to yourself.</p>
       </div>
 
-      <ol class="journey__track" data-journey>
-        <li class="journey__stage" data-reveal>
-          <span class="journey__index" aria-hidden="true">I</span>
-          <span class="journey__node" aria-hidden="true"></span>
-          <div class="journey__content">
-            <p class="journey__service">Transformational Coaching</p>
-            <h3 class="journey__name font-display">Reflect</h3>
-            <p class="journey__text">Turn new awareness into conscious action. Make clearer decisions, set healthier boundaries, and begin creating a life that genuinely reflects who you are.</p>
-            <a class="link" href="coaching.html">Explore Coaching <span class="link__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </li>
-
-        <li class="journey__stage" data-reveal>
-          <span class="journey__index" aria-hidden="true">II</span>
-          <span class="journey__node" aria-hidden="true"></span>
-          <div class="journey__content">
-            <p class="journey__service">Human Design</p>
-            <h3 class="journey__name font-display">Reconnect</h3>
-            <p class="journey__text">Understand your natural energy, your patterns and your design. See clearly what truly belongs to you — and what you've simply absorbed from the world around you.</p>
-            <a class="link" href="human-design.html">Explore Human Design <span class="link__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </li>
-
-        <li class="journey__stage" data-reveal>
-          <span class="journey__index" aria-hidden="true">III</span>
-          <span class="journey__node" aria-hidden="true"></span>
-          <div class="journey__content">
-            <p class="journey__service">Gendai Reiki</p>
-            <h3 class="journey__name font-display">Realign</h3>
-            <p class="journey__text">Return to your body. Release tension, restore balance, and come back to a calmer inner state — reconnecting with your emotions and your natural sense of equilibrium.</p>
-            <a class="link" href="reiki.html">Explore Gendai Reiki <span class="link__arrow" aria-hidden="true">→</span></a>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ 4 · SERVICES PREVIEW ============ -->
-  <section class="section services-preview bg-cream" aria-labelledby="services-title" id="services">
-    <div class="container container--wide">
-      <div class="section-heading" data-reveal>
-        <p class="eyebrow">The Practice</p>
-        <h2 id="services-title" class="section-heading__title">A holistic approach — mind, mechanics &amp; body</h2>
-        <p class="section-heading__intro">Three practices that work beautifully on their own, and together form one complete Reflecting Journey.</p>
-      </div>
-
-      <div class="services-preview__grid">
-        <article class="service-card service-card--coaching" data-reveal>
-          <a class="service-card__link" href="coaching.html">
-            <figure class="editorial-image service-card__image" style="--ar: 4/5"><img src="images/brand/word-reflect.webp" alt="Reflect — Transformational Coaching" loading="lazy" decoding="async" /></figure>
-            <div class="service-card__body">
-              <span class="service-card__num">01</span>
-              <h3 class="service-card__title font-display">Transformational<br />Coaching</h3>
-              <p class="service-card__desc" data-cms="services.coaching_desc">Deep introspection that connects mind, body and emotion — so you stop running on autopilot and start living from alignment.</p>
-              <span class="link service-card__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
+      <div class="path__grid">
+        <article class="path__card" data-reveal>
+          <a class="path__link" href="coaching.html">
+            <figure class="path__figure"><img src="images/uploads/laura-about.jpg" alt="Laura mapping ideas during a coaching session" loading="lazy" decoding="async" /></figure>
+            <div class="path__body">
+              <span class="path__step">01 · The mind</span>
+              <h3 class="path__word font-display">Reflect</h3>
+              <p class="path__service">Transformational Coaching</p>
+              <p class="path__desc" data-cms="services.coaching_desc">Turn new awareness into clearer decisions, healthier boundaries and a life that genuinely reflects who you are.</p>
+              <span class="link path__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
         </article>
 
-        <article class="service-card service-card--hd" data-reveal data-reveal-delay="0.12s">
-          <a class="service-card__link" href="human-design.html">
-            <figure class="editorial-image service-card__image" style="--ar: 4/5"><img src="images/brand/word-reconnect.webp" alt="Reconnect — Human Design" loading="lazy" decoding="async" /></figure>
-            <div class="service-card__body">
-              <span class="service-card__num">02</span>
-              <h3 class="service-card__title font-display">Human<br />Design</h3>
-              <p class="service-card__desc" data-cms="services.human_design_desc">Your unique energetic blueprint — a practical map of how you're designed to make decisions and use your energy.</p>
-              <span class="link service-card__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
+        <article class="path__card" data-reveal data-reveal-delay="0.1s">
+          <a class="path__link" href="human-design.html">
+            <figure class="path__figure"><img src="images/uploads/laura-studio.jpg" alt="Laura at her desk with Human Design books" loading="lazy" decoding="async" /></figure>
+            <div class="path__body">
+              <span class="path__step">02 · The mechanics</span>
+              <h3 class="path__word font-display">Reconnect</h3>
+              <p class="path__service">Human Design</p>
+              <p class="path__desc" data-cms="services.human_design_desc">Your unique energetic blueprint — a practical map of how you're designed to make decisions and use your energy.</p>
+              <span class="link path__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
         </article>
 
-        <article class="service-card service-card--reiki" data-reveal data-reveal-delay="0.24s">
-          <a class="service-card__link" href="reiki.html">
-            <figure class="editorial-image service-card__image" style="--ar: 4/5"><img src="images/brand/word-realign.webp" alt="Realign — Gendai Reiki" loading="lazy" decoding="async" /></figure>
-            <div class="service-card__body">
-              <span class="service-card__num">03</span>
-              <h3 class="service-card__title font-display">Gendai Reiki<br />Energy Healing</h3>
-              <p class="service-card__desc" data-cms="services.reiki_desc">Gentle Japanese energy work to release tension, rebalance your centres and let your body regenerate.</p>
-              <span class="link service-card__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
+        <article class="path__card" data-reveal data-reveal-delay="0.2s">
+          <a class="path__link" href="reiki.html">
+            <figure class="path__figure"><img src="images/brand/energy-hand.webp" alt="A hand reaching toward warm light — Gendai Reiki energy work" loading="lazy" decoding="async" /></figure>
+            <div class="path__body">
+              <span class="path__step">03 · The body</span>
+              <h3 class="path__word font-display">Realign</h3>
+              <p class="path__service">Gendai Reiki</p>
+              <p class="path__desc" data-cms="services.reiki_desc">Gentle Japanese energy work to release tension, rebalance your centres and let your body regenerate.</p>
+              <span class="link path__cta">Explore <span class="link__arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
         </article>
       </div>
 
-      <div class="services-preview__foot" data-reveal>
+      <div class="path__foot" data-reveal style="margin-top: clamp(2.5rem,5vw,3.5rem); display:flex; justify-content:center;">
         <a class="btn btn--ghost" href="services.html">See how they work together</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ 5 · WHY ENERGY THERAPY ============ -->
+  <!-- ============ D · WHY THIS APPROACH (concise) ============ -->
   <section class="section why bg-sage" aria-labelledby="why-title" id="why">
     <div class="container">
       <div class="why__intro">
         <div class="section-heading" data-reveal>
-          <p class="eyebrow">Why Energy Therapy</p>
+          <p class="eyebrow">Why this approach</p>
           <h2 id="why-title" class="section-heading__title">Come back to yourself — beneath the noise</h2>
         </div>
         <div class="why__lede prose" data-reveal data-reveal-delay="0.1s">
-          <p data-cms="home.why_p1">Energy therapy helps you reconnect with yourself beneath stress, conditioning, emotional overwhelm, survival mode and self-protective patterns.</p>
-          <p data-cms="home.why_p2">Over time, you begin to understand your emotions, your body's signals, your needs and your boundaries. Decisions become clearer and more aligned — because they come from a deeper connection to yourself, not from overthinking, fear or external expectations.</p>
+          <p data-cms="home.why_p1">Energy therapy helps you reconnect with yourself beneath stress, conditioning and survival-mode patterns. Over time, decisions become clearer and more aligned — because they come from a deeper connection to yourself.</p>
         </div>
       </div>
 
@@ -248,15 +193,12 @@
         <li><span class="why__outcome-num">02</span> Healthier boundaries &amp; relationships</li>
         <li><span class="why__outcome-num">03</span> Deeper self-trust &amp; authenticity</li>
         <li><span class="why__outcome-num">04</span> A stronger sense of purpose</li>
-        <li><span class="why__outcome-num">05</span> Less burnout &amp; inner conflict</li>
-        <li><span class="why__outcome-num">06</span> More energy, creativity &amp; motivation</li>
-        <li><span class="why__outcome-num">07</span> More ease, flow &amp; connection to life</li>
-        <li><span class="why__outcome-num">08</span> Feeling softer, lighter &amp; more present</li>
       </ul>
+      <p class="why__more"><a class="link" href="about.html">More on how energy therapy works <span class="link__arrow" aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
-  <!-- ============ 5b · BUTTERFLY REFLECTION (brand series) ============ -->
+  <!-- ============ E · BUTTERFLY (small editorial) ============ -->
   <section class="section butterfly-story bg-deepest grain on-dark" aria-labelledby="butterfly-title">
     <div class="container">
       <div class="section-heading is-centered" data-reveal>
@@ -264,7 +206,7 @@
         <h2 id="butterfly-title" class="section-heading__title">You, unedited</h2>
       </div>
     </div>
-    <div class="butterfly-strip" data-reveal data-bf-track>
+    <div class="butterfly-strip" data-bf-track>
       <figure class="poster-figure"><img src="images/brand/butterfly-1-notbroken.webp" alt="You are not broken. You never were." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-2-you.webp" alt="You, who have always moved on a path that only you could see." loading="lazy" decoding="async" /></figure>
       <figure class="poster-figure"><img src="images/brand/butterfly-3-walls.webp" alt="The world builds walls called normal — but a garden does not bloom in uniform rows." loading="lazy" decoding="async" /></figure>
@@ -283,29 +225,7 @@
     </div>
   </section>
 
-  <!-- ============ 6 · MEET LAURA ============ -->
-  <section class="section meet bg-cream" aria-labelledby="meet-title" id="meet-laura">
-    <div class="container meet__inner">
-      <figure class="editorial-image editorial-image--rounded is-zoom meet__image" style="--ar: 4/5; --pos: 58% 26%"
-              data-reveal="mask" data-placeholder="Laura — portrait">
-        <img src="images/uploads/laura-hero.jpg" alt="Laura Brambilla working in natural light on her balcony in Beirut" loading="lazy" decoding="async" />
-        <figcaption class="meet__badge">
-          <span class="meet__badge-name">Laura Brambilla</span>
-          <span class="meet__badge-role">Reflector · Coach · Reiki Practitioner</span>
-        </figcaption>
-      </figure>
-
-      <div class="meet__text" data-reveal data-reveal-delay="0.1s">
-        <p class="eyebrow">Meet Laura</p>
-        <h2 id="meet-title" class="meet__title">Your Reflector therapist &amp; guide to alignment</h2>
-        <p data-cms="home.meet_p1">Reflecting Journeys is born from more than twenty years of global experience — as a coach, entrepreneur, consultant and humanitarian worker across projects in psychosocial support, education, peacebuilding and conflict resolution.</p>
-        <p data-cms="home.meet_p2">Originally from Italy and now anchored in Beirut, Laura weaves together Western education and Eastern philosophy into one integrative practice. As a <strong>Reflector</strong> in Human Design — the rarest type, just 1% of people — she becomes your mirror, reflecting your own energy back to you with clarity and compassion.</p>
-        <a class="link" href="about.html">Read Laura's story <span class="link__arrow" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 7 · TESTIMONIALS ============ -->
+  <!-- ============ F · TESTIMONIALS ============ -->
   <section class="section testimonials bg-deep grain on-dark" aria-labelledby="testi-title" id="testimonials">
     <div class="container">
       <div class="section-heading is-centered" data-reveal>
@@ -354,33 +274,20 @@
     </div>
   </section>
 
-  <!-- ============ 7b · BRAND BAND (official logo lockup) ============ -->
-  <section class="brand-band bg-deep grain on-dark" aria-label="Reflecting Journeys — Reflect, Reconnect, Realign">
-    <figure class="poster-figure" data-reveal>
-      <img src="images/brand/logo-lockup.webp" alt="Reflecting Journeys — Reflect, Reconnect, Realign" loading="lazy" decoding="async" />
-    </figure>
-  </section>
-
-  <!-- ============ 8 · DISCOVERY CTA ============ -->
+  <!-- ============ G · BOOKING CTA ============ -->
   <section class="section booking-cta bg-deepest grain bloom bloom--bottom-right on-dark" aria-labelledby="booking-cta-title">
     <div class="container container--text text-center">
       <p class="eyebrow is-centered" data-reveal>Begin</p>
       <h2 id="booking-cta-title" class="booking-cta__title" data-reveal>Ready to discover your path?</h2>
       <p class="lead booking-cta__lead" data-reveal>
-        The first step is a free 30-minute discovery call. A relaxed conversation to explore
+        The first step is a free 30-minute discovery call — a relaxed conversation to explore
         where you are, the support you're looking for, and how a Reflecting Journey could take shape.
       </p>
-      <ul class="booking-cta__points" data-stagger data-reveal>
-        <li>Whether the approach is the right fit</li>
-        <li>The support &amp; services you're looking for</li>
-        <li>A package that aligns with your goals</li>
-      </ul>
       <div class="booking-cta__actions" data-reveal>
         <a class="btn btn--primary" href="contact.html">Book your free discovery call</a>
       </div>
     </div>
   </section>
-
 
   </main>
   <footer class="site-footer bg-deepest grain on-dark" role="contentinfo">
@@ -429,7 +336,5 @@
   </footer>
 
   <script src="script.js" defer></script>
-
 </body>
 </html>
-

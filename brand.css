@@ -48,8 +48,9 @@
   .rrr-triptych .poster-figure { scroll-snap-align: center; }
 }
 
-/* ---- Butterfly series: editorial horizontal carousel ---- */
-.butterfly-story { padding-block: clamp(3.5rem, 6vw, 5rem); }
+/* ---- Butterfly series: small editorial horizontal carousel (reduced dominance) ---- */
+.butterfly-story { padding-block: clamp(2.5rem, 4vw, 3.5rem); }
+.butterfly-story .section-heading { margin-bottom: clamp(1.2rem, 2.5vw, 2rem); }
 .butterfly-strip {
   display: grid; grid-auto-flow: column;
   grid-auto-columns: 86vw;                 /* mobile: ~1 poster at a time */
