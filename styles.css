@@ -550,8 +550,8 @@ strong { font-weight: 600; color: inherit; }
   height: 30px;
   flex: none;
   background: currentColor;
-  -webkit-mask: url("images/rj-icon.svg") center / contain no-repeat;
-          mask: url("images/rj-icon.svg") center / contain no-repeat;
+  -webkit-mask: url("images/rj-emblem.png") center / contain no-repeat;
+          mask: url("images/rj-emblem.png") center / contain no-repeat;
   transition: opacity var(--dur-fast) var(--ease-out);
 }
 .logo:hover .logo__mark { opacity: 0.82; }
@@ -914,8 +914,8 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
   width: 54px; height: 30px;
   background: currentColor;
   opacity: 0.75;
-  -webkit-mask: url("images/rj-icon.svg") center / contain no-repeat;
-          mask: url("images/rj-icon.svg") center / contain no-repeat;
+  -webkit-mask: url("images/rj-emblem.png") center / contain no-repeat;
+          mask: url("images/rj-emblem.png") center / contain no-repeat;
 }
 /* ============================================================
    REFLECTING JOURNEYS — Page compositions
