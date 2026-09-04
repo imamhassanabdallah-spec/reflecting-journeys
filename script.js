@@ -29,10 +29,23 @@
       doc.body.classList.toggle('nav-open', open);   // locks body scroll (CSS)
     };
     toggle.addEventListener('click', function () {
+      nav.style.transition = '';                 // animate open/close from the button
       setOpen(toggle.getAttribute('aria-expanded') !== 'true');
     });
-    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
-    doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    // Tapping a menu link: close INSTANTLY (no animation) so the page navigation
+    // doesn't play a half-finished slide/fade (the "glitch to the left").
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) { nav.style.transition = 'none'; setOpen(false); }
+    });
+    // Tap anywhere outside the panel (the dimmed area) to close — and don't let
+    // that tap activate whatever is behind it.
+    doc.addEventListener('click', function (e) {
+      if (!doc.body.classList.contains('nav-open')) return;
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      e.preventDefault(); e.stopPropagation();
+      nav.style.transition = ''; setOpen(false);
+    }, true);
+    doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') { nav.style.transition = ''; setOpen(false); } });
     window.addEventListener('resize', function () { if (window.innerWidth > 920) setOpen(false); });
   }
 

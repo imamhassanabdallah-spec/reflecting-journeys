@@ -6,8 +6,10 @@
 
 /* ---- Poster: a full brand poster shown in its entirety (never cropped) ---- */
 .poster-moment { display: grid; place-items: center; padding-block: clamp(3rem, 6vw, 5.5rem); }
-.poster-moment .poster-figure { margin: 0; width: 100%; max-width: 460px; }
-.poster-moment--wide .poster-figure { max-width: 560px; }
+/* Centre standalone posters (they were left-aligned in the container, leaving a
+   big empty gap on the right) and give them more presence on desktop. */
+.poster-moment .poster-figure { margin: 0 auto; width: 100%; max-width: 560px; }
+.poster-moment--wide .poster-figure { max-width: 620px; }
 /* Calmer, controlled size on phones so standalone posters don't dominate */
 @media (max-width: 600px) { .poster-moment .poster-figure { max-width: 320px; } }
 .poster-figure {

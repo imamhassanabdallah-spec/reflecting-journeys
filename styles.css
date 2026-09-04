@@ -714,43 +714,50 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
 @media (max-width: 920px) {
   .nav-toggle { display: block; position: relative; z-index: var(--z-overlay); }
 
-  /* Full-height drawer. Scrolls from the TOP (justify-content:flex-start)
-     so a long menu + submenu is always fully reachable; body scroll locked. */
+  /* Compact dropdown PANEL below the header (not a full-screen takeover).
+     Fits its content; scrolls internally only if it would exceed the screen. */
   .nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    width: 100vw;
-    height: 100vh;            /* fallback */
-    height: 100dvh;           /* dynamic viewport — accounts for mobile browser chrome */
+    top: var(--header-h); left: 0; right: 0;
+    max-height: calc(100dvh - var(--header-h));
     z-index: var(--z-menu);
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
     gap: 0;
-    padding: calc(var(--header-h) + 1.4rem) var(--gutter) 2.5rem;
+    padding: 0.4rem var(--gutter) 1.3rem;
     background: var(--surface-deepest);
     color: var(--text-on-dark);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 26px 50px color-mix(in oklab, var(--rj-olive-black) 55%, transparent);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity var(--dur-fast) var(--ease-out),
-                transform var(--dur-fast) var(--ease-out),
-                visibility var(--dur-fast);
+    transform: translateY(-10px);
+    transition: opacity 0.22s var(--ease-out),
+                transform 0.22s var(--ease-out),
+                visibility 0.22s;
   }
   .nav.is-open { opacity: 1; visibility: visible; transform: none; }
 
+  /* Dimmed backdrop behind the panel (visual only; tap-to-close handled in JS) */
+  body.nav-open::before {
+    content: ""; position: fixed; inset: 0; z-index: calc(var(--z-menu) - 1);
+    background: color-mix(in oklab, var(--rj-olive-black) 46%, transparent);
+    pointer-events: none;
+  }
+
   .nav__list { flex-direction: column; align-items: stretch; gap: 0; width: 100%; }
   .nav__list > li { width: 100%; border-bottom: 1px solid var(--line-on-dark); }
+  .nav__list > li:last-child { border-bottom: 0; }
 
   .nav a[data-nav], .nav__sub-toggle {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-size: 1.3rem;
     font-weight: 400;
-    padding-block: 0.8rem;
+    padding-block: 0.72rem;
     width: 100%;
     justify-content: space-between;
   }
@@ -760,28 +767,31 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
   .nav__sub {
     position: static; transform: none; opacity: 1; visibility: visible; pointer-events: auto;
     min-width: 0; width: 100%; background: transparent; border: 0; box-shadow: none;
-    padding: 0 0 0.9rem; color: var(--text-on-dark);
+    padding: 0.1rem 0 0.6rem; color: var(--text-on-dark);
   }
-  .nav__sub-label { color: var(--rj-honey); padding-left: 0; }
-  .nav__sub-link { padding-left: 0; padding-block: 0.5rem; }
+  .nav__sub-label { color: var(--rj-honey); padding-left: 0.1rem; padding-block: 0.1rem 0.35rem; font-size: 0.64rem; }
+  .nav__sub-link { padding-left: 0.1rem; padding-block: 0.42rem; gap: 0.7rem; }
   .nav__sub-link:hover { background: transparent; }
-  .nav__sub-title { color: var(--text-on-dark); font-size: 1.05rem; }
-  .nav__sub-desc { color: var(--text-on-dark-mute); }
+  .nav__sub-title { color: var(--text-on-dark); font-size: 0.98rem; }
+  .nav__sub-desc { color: var(--text-on-dark-mute); font-size: 0.8rem; }
   .nav__sub-num { color: var(--rj-honey); }
+  .nav__sub-all { margin: 0.3rem 0 0.1rem 0.1rem; }
   .nav__chev { display: none; }
 
   .nav__cta {
-    margin: 1.6rem 0 0; align-self: flex-start; font-size: 0.9rem; padding: 1.05em 2.2em;
+    margin: 1rem 0 0.2rem; align-self: flex-start; font-size: 0.85rem; padding: 0.95em 2rem;
     --btn-bg: var(--rj-cream); --btn-fg: var(--rj-olive-deep); --btn-bd: var(--rj-cream);
   }
 
   body.nav-open { overflow: hidden; }
-  /* keep the toggle (✕) readable over the dark drawer, AND remove backdrop-filter
-     while open — it makes .site-header a containing block for the fixed menu,
-     which was clipping the menu to the header's height. !important beats the
-     scrolled-header rule. */
+  /* Solid header while open so the ✕ stays readable and it reads as one panel.
+     Also drop backdrop-filter so the header is NOT a containing block for the
+     fixed panel (that was the old clipping bug). */
   body.nav-open .site-header {
-    color: var(--text-on-dark); background: transparent; border-color: transparent; box-shadow: none;
+    color: var(--text-on-dark);
+    background: var(--surface-deepest);
+    border-color: transparent; box-shadow: none;
+    z-index: var(--z-overlay);            /* header + panel above the dim backdrop */
     -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
   }
