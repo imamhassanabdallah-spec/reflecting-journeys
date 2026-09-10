@@ -12,7 +12,7 @@
   },
   "home": {
     "hero_eyebrow": "Human Design · Reiki · Coaching",
-    "hero_lead": "Not a journey to become someone new. *A journey back to yourself.*",
+    "hero_lead": "*I see you*",
     "beirut_eyebrow": "From Beirut",
     "beirut_quote": "A crack isn't a flaw.\nIt's an *opening*, an opportunity,\na new beginning.",
     "beirut_p1": "From Beirut — a city of profound resilience that has learned to rise from its fractures — I offer you a living testament to a simple truth: **the most powerful light comes from the cracks.**",
@@ -40,8 +40,8 @@
     "story_p4": "This synthesis of **Western education and Eastern philosophy** forms the backbone of my integrative practice — a space where clients feel truly seen, safe, and empowered to embrace every part of their story, especially the fractured ones."
   },
   "cta": {
-    "title": "Ready to discover your path?",
-    "lead": "The first step is a free 30-minute discovery call. A relaxed conversation to explore where you are, the support you're looking for, and how a Reflecting Journey could take shape.",
+    "title": "Ready to come back to yourself?",
+    "lead": "The first step is a free 30-minute discovery call. A relaxed conversation to explore where you are and the support you're looking for.",
     "button": "Book your free discovery call"
   },
   "testimonials": [
@@ -58,8 +58,8 @@
   ],
   "images": {
     "home": {
-      "hero": "images/uploads/laura-hero.jpg",
-      "meet": "images/uploads/laura-journey.jpg"
+      "hero": "images/uploads/laura-studio.jpg",
+      "meet": "images/uploads/laura-trees.jpg"
     },
     "services": {
       "coaching": "images/uploads/laura-about.jpg",
@@ -67,7 +67,7 @@
       "reiki": "images/brand/energy-hand.webp"
     },
     "about": {
-      "main": "images/uploads/laura-journey.jpg",
+      "main": "images/uploads/laura-nature.jpg",
       "second": "images/brand/laura-reiki.webp"
     },
     "butterfly": {
