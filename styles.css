@@ -540,28 +540,52 @@ strong { font-weight: 600; color: inherit; }
 /* ============================================================
    LOGO
    ============================================================ */
-/* Header logo = the single official emblem, one element, one asset.
-   Rendered via CSS mask so it inherits the header's text colour
-   (cream over the dark hero, ink once scrolled). No wordmark fragments. */
+/* Header logo = full compact lockup: official emblem + REFLECTING / Journeys wordmark.
+   Emblem via CSS mask, wordmark in currentColor, so the whole lockup inherits the
+   header's text colour (cream over the dark hero, ink once scrolled). */
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: 0.62rem;
   color: currentColor;
   line-height: 1;
   padding-block: 0.2rem;
 }
 .logo__mark {
-  width: 58px;
-  height: 30px;
+  width: 46px;
+  height: 26px;
   flex: none;
   background: currentColor;
   -webkit-mask: url("images/rj-emblem.png") center / contain no-repeat;
           mask: url("images/rj-emblem.png") center / contain no-repeat;
   transition: opacity var(--dur-fast) var(--ease-out);
 }
+.logo__word { display: grid; gap: 0.14em; }
+.logo__word-top {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  line-height: 1;
+  opacity: 0.9;
+}
+.logo__word-bottom {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-indent: 0.1em;
+  text-transform: uppercase;
+  line-height: 0.82;
+}
 .logo:hover .logo__mark { opacity: 0.82; }
 @media (max-width: 640px) {
-  .logo__mark { width: 50px; height: 26px; }
+  .logo { gap: 0.5rem; }
+  .logo__mark { width: 40px; height: 23px; }
+  .logo__word-top { font-size: 0.52rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .logo__word-bottom { font-size: 1.12rem; }
 }
 
 /* ============================================================
@@ -1507,3 +1531,6 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 @media (max-width: 640px) {
   .prose p { text-align: left; hyphens: manual; }
 }
+
+/* #2 Hero eyebrow: cream (was muddy rust on green) */
+.hero__eyebrow { color: var(--text-on-dark-soft); }
