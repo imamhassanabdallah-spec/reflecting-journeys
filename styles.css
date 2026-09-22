@@ -825,12 +825,6 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
     -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
   }
-
-  /* Centre the full logo while the menu is open; keep the ✕ pinned to the right */
-  body.nav-open .site-header__inner { position: relative; justify-content: flex-end; }
-  body.nav-open .site-header__inner .logo {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  }
 }
 
 /* ============================================================
@@ -873,6 +867,9 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
 @media (max-width: 520px) {
   .site-footer__top { grid-template-columns: 1fr; }
   .site-footer__base { flex-direction: column; align-items: flex-start; }
+  /* Centre the footer brand lockup on phones */
+  .site-footer__brand { text-align: center; }
+  .site-footer__brand .logo-lockup { display: grid; width: fit-content; margin-inline: auto; }
 }
 
 /* ============================================================
