@@ -825,6 +825,12 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
     -webkit-backdrop-filter: none !important;
             backdrop-filter: none !important;
   }
+
+  /* Centre the full logo while the menu is open; keep the ✕ pinned to the right */
+  body.nav-open .site-header__inner { position: relative; justify-content: flex-end; }
+  body.nav-open .site-header__inner .logo {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  }
 }
 
 /* ============================================================
@@ -1282,7 +1288,7 @@ body.has-hero .hero:first-of-type { margin-top: calc(-1 * var(--header-h)); }
    HOME · 7 · TESTIMONIALS CAROUSEL
    ============================================================ */
 .carousel { max-width: 860px; margin: clamp(2rem, 5vw, 3.5rem) auto 0; }
-.carousel__viewport { overflow: hidden; }
+.carousel__viewport { overflow: hidden; transition: height var(--dur-slow) var(--ease-soft); }
 .carousel__track { display: flex; transition: transform var(--dur-slow) var(--ease-soft); }
 .carousel__slide { flex: 0 0 100%; padding: 0 clamp(0.5rem, 3vw, 2rem); }
 .testimonial { text-align: center; max-width: 46rem; margin-inline: auto; }

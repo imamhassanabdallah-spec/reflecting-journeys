@@ -101,10 +101,18 @@
         return b;
       });
 
+      var viewport = root.querySelector('[data-carousel-viewport]');
+      var syncHeight = function () {
+        if (!viewport) return;
+        var content = slides[index].querySelector('.testimonial') || slides[index];
+        viewport.style.height = Math.ceil(content.getBoundingClientRect().height) + 'px';
+      };
+
       var render = function () {
         track.style.transform = 'translateX(' + (-index * 100) + '%)';
         slides.forEach(function (s, i) { s.setAttribute('aria-hidden', String(i !== index)); });
         dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === index)); });
+        syncHeight();
       };
       var go = function (i) { index = (i + slides.length) % slides.length; render(); };
       var nextSlide = function () { go(index + 1); };
@@ -129,6 +137,10 @@
       track.addEventListener('touchend', function (e) { end(e.changedTouches[0].clientX); }, { passive: true });
       track.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') start(e.clientX); });
       track.addEventListener('pointerup', function (e) { if (e.pointerType === 'mouse') end(e.clientX); });
+
+      window.addEventListener('resize', syncHeight);
+      window.addEventListener('load', syncHeight);
+      if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(syncHeight);
 
       render();
     });
