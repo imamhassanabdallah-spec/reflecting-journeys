@@ -25,7 +25,7 @@
     "why_p2": "Over time, you begin to understand your emotions, your body's signals, your needs and your boundaries. Decisions become clearer and more aligned — because they come from a deeper connection to yourself, not from overthinking, fear or external expectations."
   },
   "services": {
-    "coaching_desc": "Deep introspection that connects mind, body and emotion — so you stop running on autopilot and start living from alignment.",
+    "coaching_desc": "Deep introspection that connects mind, body and emotions — so you stop running on autopilot and start living from alignment.",
     "human_design_desc": "Your unique energetic blueprint — a practical map of how you're designed to make decisions and use your energy.",
     "reiki_desc": "Gentle Japanese energy work to release tension, rebalance your centres and let your body regenerate.",
     "coaching_lead": "A deeper kind of coaching — where mind and body meet, and life begins to unfold in ways you couldn't have consciously planned.",
@@ -59,11 +59,11 @@
   "images": {
     "home": {
       "hero": "images/uploads/laura-trees.jpg",
-      "meet": "images/uploads/laura-studio.jpg"
+      "meet": "images/uploads/laura-about.jpg"
     },
     "services": {
-      "coaching": "images/uploads/laura-about.jpg",
-      "human_design": "images/uploads/laura-studio.jpg",
+      "coaching": "images/uploads/laura-studio.jpg",
+      "human_design": "images/uploads/laura-journey.jpg",
       "reiki": "images/uploads/laura-reiki-photo.jpg"
     },
     "about": {

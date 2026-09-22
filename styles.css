@@ -1533,4 +1533,4 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 }
 
 /* #2 Hero eyebrow: cream (was muddy rust on green) */
-.hero__eyebrow { color: var(--text-on-dark-soft); }
+.hero__eyebrow { color: var(--text-on-dark); }
