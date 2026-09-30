@@ -160,26 +160,29 @@
     </div>
   </section>
 
-  <!-- ============ LARGE BRAND IMAGE (full-width) ============ -->
-  <section class="contact-image" aria-label="Reflecting Journeys">
-    <img src="images/brand/emblem-art.webp" alt="The Reflecting Journeys emblem in soft green light" loading="lazy" decoding="async" />
-    <span class="contact-image__mark" aria-hidden="true"></span>
-  </section>
-
-  <!-- ============ MAP (intentionally large) ============ -->
-  <section class="map-section" aria-label="Location — Beirut, Lebanon">
-    <div class="map-frame">
-      <iframe
-        title="Reflecting Journeys — based in Beirut, Lebanon"
-        src="https://www.google.com/maps?q=Beirut%2C%20Lebanon&z=12&output=embed"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div class="map-badge">
-      <span class="map-badge__eyebrow eyebrow">Based in</span>
-      <span class="map-badge__city font-display">Beirut, Lebanon</span>
-      <span class="map-badge__note">In person &amp; online, worldwide</span>
-    </div>
-  </section>
+  <!-- Desktop: brand image and map side by side; phones: stacked as before -->
+  <div class="contact-visuals">
+    <!-- ============ LARGE BRAND IMAGE (full-width) ============ -->
+    <section class="contact-image" aria-label="Reflecting Journeys">
+      <img src="images/brand/emblem-art.webp" alt="The Reflecting Journeys emblem in soft green light" loading="lazy" decoding="async" />
+      <span class="contact-image__mark" aria-hidden="true"></span>
+    </section>
+  
+    <!-- ============ MAP (intentionally large) ============ -->
+    <section class="map-section" aria-label="Location — Beirut, Lebanon">
+      <div class="map-frame">
+        <iframe
+          title="Reflecting Journeys — based in Beirut, Lebanon"
+          src="https://www.google.com/maps?q=Beirut%2C%20Lebanon&z=12&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-badge">
+        <span class="map-badge__eyebrow eyebrow">Based in</span>
+        <span class="map-badge__city font-display">Beirut, Lebanon</span>
+        <span class="map-badge__note">In person &amp; online, worldwide</span>
+      </div>
+    </section>
+  </div>
 
   </main>
   <footer class="site-footer bg-deepest grain on-dark" role="contentinfo">

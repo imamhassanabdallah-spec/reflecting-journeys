@@ -1721,3 +1721,18 @@ a.contact-list__value:hover { color: var(--accent-warm); }
   .hero__copy { max-width: 40rem; }
   .hero__title--statement .ln { text-wrap: balance; }
 }
+
+@media (min-width: 1000px) {
+  /* Contact: brand image + map as two framed panels inside the shared frame.
+     (Full-width, the photo's emblem scaled up to ~550px on large screens.) */
+  .contact-visuals {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1.5rem;
+    max-width: var(--container); margin-inline: auto;
+    padding: 0 var(--gutter) var(--section-pad);
+  }
+  .contact-visuals .contact-image,
+  .contact-visuals .map-section { border-radius: var(--radius-lg); overflow: hidden; }
+  .contact-visuals .contact-image img,
+  .contact-visuals .map-frame { height: clamp(420px, 42vw, 560px); }
+  .contact-visuals .map-badge { left: 1.5rem; bottom: 1.5rem; }
+}
