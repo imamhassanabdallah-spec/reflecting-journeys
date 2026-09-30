@@ -195,8 +195,8 @@
 }
 
 /* Header height as a live variable (used for scroll offsets & mobile menu) */
-:root { --header-h: 76px; }
-@media (max-width: 640px) { :root { --header-h: 66px; } }
+:root { --header-h: 84px; }
+@media (max-width: 640px) { :root { --header-h: 70px; } }
 /* ============================================================
    REFLECTING JOURNEYS — Base layer
    Reset · typography · layout primitives · buttons · motion
@@ -384,24 +384,27 @@ strong { font-weight: 600; color: inherit; }
 
 /* A soft directional light bloom — the brand's core "light from dark" move */
 .bloom { position: relative; isolation: isolate; overflow: clip; }
+/* The glow layer covers the whole section; the gradient fades to transparent within
+   its own radius, and the vertical mask fades it out before the section's top and
+   bottom edges — so it can never end in a hard line against the next section. */
 .bloom::before {
   content: "";
   position: absolute;
-  inset: -20% -10% auto auto;
-  width: min(85%, 900px);
-  aspect-ratio: 1;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 72% 68%,
-              color-mix(in oklab, var(--rj-honey-lit) 60%, transparent) 0%,
-              color-mix(in oklab, var(--rj-sage) 22%, transparent) 32%,
-              transparent 62%);
-  filter: blur(10px);
+  --bloom-at: 88% 32%;
+  background: radial-gradient(circle min(52vw, 620px) at var(--bloom-at),
+              color-mix(in oklab, var(--rj-honey-lit) 58%, transparent) 0%,
+              color-mix(in oklab, var(--rj-sage) 22%, transparent) 42%,
+              transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 82%, transparent 100%);
   opacity: 0.85;
 }
 .bloom > * { position: relative; z-index: 1; }
-.bloom--bottom-right::before { inset: auto -8% -25% auto; }
-.bloom--left::before { inset: auto auto -30% -20%; }
+.bloom--bottom-right::before { --bloom-at: 90% 70%; }
+.bloom--left::before { --bloom-at: 10% 72%; }
 
 /* Static bloom only — no perpetual drift animation (performance & calm). */
 
@@ -566,7 +569,7 @@ strong { font-weight: 600; color: inherit; }
 .logo__word { display: grid; gap: 0.2em; justify-items: center; }
 .logo__word-top {
   font-family: var(--font-body);
-  font-size: 0.52rem;
+  font-size: 0.6rem;
   font-weight: 400;
   letter-spacing: 0.34em;
   text-indent: 0.34em;
@@ -587,7 +590,7 @@ strong { font-weight: 600; color: inherit; }
 @media (max-width: 640px) {
   .logo { gap: 0.26rem; }
   .logo__mark { width: 34px; height: 19px; }
-  .logo__word-top { font-size: 0.46rem; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .logo__word-top { font-size: 0.52rem; letter-spacing: 0.3em; text-indent: 0.3em; }
   .logo__word-bottom { font-size: 0.96rem; }
 }
 
@@ -611,8 +614,9 @@ strong { font-weight: 600; color: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  min-height: var(--header-h);
-  padding-block: 0.65rem;
+  /* Fixed height: the hero is pulled up by exactly this much, so the two must match */
+  height: var(--header-h);
+  padding-block: 0;
 }
 
 /* Transparent-over-hero variant (home + dark-hero pages) */
@@ -992,7 +996,8 @@ body.has-hero .site-header:not(.is-scrolled) .nav__cta:hover { --btn-bg: color-m
    HOME · HERO — split: copy (left) + Laura portrait (right)
    ============================================================ */
 /* Pull the hero up under the transparent sticky header. */
-body.has-hero .hero:first-of-type { margin-top: calc(-1 * var(--header-h)); }
+/* -1px also covers the header's bottom border, so no page background peeks through */
+body.has-hero .hero:first-of-type { margin-top: calc(-1 * var(--header-h) - 1px); }
 
 .hero {
   position: relative;
@@ -1531,7 +1536,16 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 .brand-lockup img { width: 100%; height: auto; border-radius: var(--radius-lg); display: block; box-shadow: var(--shadow-md); }
 
 /* Big full-width contact image (#24) */
-.contact-image { width: 100%; }
+.contact-image { width: 100%; position: relative; }
+/* The photo's emblem is low-res; a vector copy is laid exactly over it. The mask SVG
+   shares the photo's 1120x1400 canvas and the same cover/center fit, so they align
+   at every size. */
+.contact-image__mark {
+  position: absolute; inset: 0; pointer-events: none;
+  background: #2c2d1f;
+  -webkit-mask: url("images/brand/emblem-art-mark.svg") center / cover no-repeat;
+          mask: url("images/brand/emblem-art-mark.svg") center / cover no-repeat;
+}
 .contact-image img {
   width: 100%; height: clamp(360px, 60vh, 680px);
   object-fit: cover; object-position: center; display: block;
@@ -1550,3 +1564,16 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 
 /* #2 Hero eyebrow: cream (was muddy rust on green) */
 .hero__eyebrow { color: var(--text-on-dark); }
+
+/* Keep a word pair together on one line (e.g. "30-minute") */
+.nowrap { white-space: nowrap; }
+
+/* Thank-you page (contact form success) */
+.thanks { min-height: calc(100vh - var(--header-h) - 1px); display: grid; align-items: center; }
+.thanks__mark {
+  display: block; width: 64px; height: 36px; margin: 0 auto 1.6rem; background: var(--rj-olive-deep);
+  -webkit-mask: url("images/rj-emblem.png") center / contain no-repeat;
+          mask: url("images/rj-emblem.png") center / contain no-repeat;
+}
+.thanks__lead { margin-inline: auto; }
+.thanks__btn { margin-top: 2rem; }

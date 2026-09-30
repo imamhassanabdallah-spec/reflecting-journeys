@@ -14,8 +14,12 @@
   <meta property="og:title" content="Contact — Book a Free Call | Reflecting Journeys" />
   <meta property="og:description" content="Begin your Reflecting Journey. Book a free 30-minute discovery call with Laura Brambilla — by email, WhatsApp or Instagram. Beirut & online worldwide." />
   <meta property="og:url" content="https://reflecting-journeys.netlify.app/contact.html" />
-  <meta property="og:image" content="https://reflecting-journeys.netlify.app/images/uploads/laura-hero.jpg" />
+  <meta property="og:image" content="https://reflecting-journeys.netlify.app/images/og-share.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Reflecting Journeys — Laura Brambilla. Not a journey to become someone new. A journey back to yourself." />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://reflecting-journeys.netlify.app/images/og-share.jpg" />
 
   <!-- Icons -->
   <link rel="icon" href="images/favicon.png" type="image/png" />
@@ -88,7 +92,7 @@
   <section class="page-hero page-hero--center bg-cream">
     <div class="container container--text text-center" data-reveal>
       <p class="eyebrow is-centered">Contact</p>
-      <h1 class="page-hero__title font-display">Book a free 30-minute discovery call</h1>
+      <h1 class="page-hero__title font-display">Book a free <span class="nowrap">30-minute</span> discovery call</h1>
     </div>
   </section>
 
@@ -121,7 +125,7 @@
         </div>
       </div>
 
-      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal data-reveal-delay="0.1s">
+      <form class="contact-form" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" data-reveal data-reveal-delay="0.1s">
         <input type="hidden" name="form-name" value="contact" />
         <p class="visually-hidden" aria-hidden="true">
           <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
@@ -157,6 +161,7 @@
   <!-- ============ LARGE BRAND IMAGE (full-width) ============ -->
   <section class="contact-image" aria-label="Reflecting Journeys">
     <img src="images/brand/emblem-art.webp" alt="The Reflecting Journeys emblem in soft green light" loading="lazy" decoding="async" />
+    <span class="contact-image__mark" aria-hidden="true"></span>
   </section>
 
   <!-- ============ MAP (intentionally large) ============ -->
