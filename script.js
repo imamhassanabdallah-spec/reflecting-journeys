@@ -186,7 +186,8 @@
         // Editable images: [data-cms-img="images.home.hero"] -> sets the <img> src
         doc.querySelectorAll('[data-cms-img]').forEach(function (el) {
           var v = get(el.getAttribute('data-cms-img'));
-          if (v) el.setAttribute('src', v);
+          // A new image picked in the CMS has no pre-sized versions: drop srcset so it shows.
+          if (v && v !== el.getAttribute('src')) { el.removeAttribute('srcset'); el.setAttribute('src', v); }
         });
 
         var fl = doc.querySelectorAll('.site-footer__connect .site-footer__contact');
