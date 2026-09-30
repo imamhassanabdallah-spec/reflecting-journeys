@@ -1577,3 +1577,52 @@ a.contact-list__value:hover { color: var(--accent-warm); }
 }
 .thanks__lead { margin-inline: auto; }
 .thanks__btn { margin-top: 2rem; }
+
+/* ============================================================
+   POLISH PASS 2 — alignment & consistency details
+   ============================================================ */
+
+/* Justified paragraphs (client's choice): allow tidy hyphenation of long words
+   only, and let the browser balance line breaks to avoid wide word gaps. */
+.prose p { hyphenate-limit-chars: 8 4 4; text-wrap: pretty; }
+
+/* Home "path" cards: the Explore links share one baseline across the row. */
+.path__card { display: flex; }
+.path__link { display: flex; flex-direction: column; width: 100%; }
+.path__body { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.path__cta { margin-top: auto; padding-top: 0.9rem; }
+
+/* Services overview: same for the three "Explore …" links. */
+.triad__item { display: flex; flex-direction: column; align-items: flex-start; }
+.triad__item > .link { margin-top: auto; }
+
+/* Coaching comparison labels use the same label style as every other eyebrow. */
+.compare__label { font-family: var(--font-body); font-weight: 500; }
+
+/* "One path, three practices": the page you're on is quietly marked, not a link target. */
+/* (Dim the children, not the card: the reveal animation owns the card's opacity.) */
+.related__card.is-current { pointer-events: none; }
+.related__card.is-current > * { opacity: 0.5; }
+.related__card.is-current .related__cta { visibility: hidden; }
+.related__cta { margin-top: auto; padding-top: 0.6rem; }
+
+/* Meet badge: roles wrap as whole words, lines balanced. */
+.meet__badge-role { text-wrap: balance; }
+
+/* Footer brand column: logo, tagline and location share one centre line. */
+.site-footer__brand { width: fit-content; text-align: center; }
+.site-footer__brand .logo-lockup { margin-inline: auto; }
+
+@media (max-width: 800px) {
+  /* Meet photo spans the text column, like every other image on phones. */
+  .meet__image { width: 100%; max-width: 100%; }
+}
+@media (max-width: 860px) {
+  .site-footer__brand { width: auto; }
+}
+@media (max-width: 520px) {
+  /* Footer on phones: Explore + Sessions side by side, Connect full width. */
+  .site-footer__top { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
+  .site-footer__brand, .site-footer__connect { grid-column: 1 / -1; }
+  .site-footer__base { align-items: center; text-align: center; }
+}

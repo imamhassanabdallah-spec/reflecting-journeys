@@ -175,7 +175,7 @@
       .then(function (data) {
         var get = function (path) { return path.split('.').reduce(function (o, k) { return (o == null ? undefined : o[k]); }, data); };
         var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); };
-        var md = function (s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\b(\d+-\w+)/g, '<span class="nowrap">$1</span>').replace(/\n/g, '<br>'); };
+        var md = function (s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\b(\d+-\w+)/g, '<span class="nowrap">$1</span>').replace(/ —(?=\s)/g, '&nbsp;—').replace(/\n/g, '<br>'); };
         var c = data.contact || {};
 
         doc.querySelectorAll('[data-cms]').forEach(function (el) {
