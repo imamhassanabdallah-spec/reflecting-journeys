@@ -1360,6 +1360,11 @@ body.has-hero .hero:first-of-type { margin-top: calc(-1 * var(--header-h)); }
 .pillar__num { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent-warm); }
 .pillar__title { font-size: clamp(1.3rem, 2.2vw, 1.7rem); margin: 0.5rem 0 0.7rem; }
 .pillar p { color: var(--text-soft); font-size: 0.98rem; }
+/* Odd count: the last card spans the full row (no empty grey cell) */
+@media (min-width: 681px) {
+  .pillar:last-child:nth-child(odd) { grid-column: 1 / -1; text-align: center; }
+  .pillar:last-child:nth-child(odd) p { max-width: 46ch; margin-inline: auto; }
+}
 @media (max-width: 680px) { .pillars { grid-template-columns: 1fr; } }
 
 /* ---------- About: reflector ---------- */
