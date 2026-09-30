@@ -1626,3 +1626,98 @@ a.contact-list__value:hover { color: var(--accent-warm); }
   .site-footer__brand, .site-footer__connect { grid-column: 1 / -1; }
   .site-footer__base { align-items: center; text-align: center; }
 }
+
+/* ============================================================
+   DESKTOP COMPOSITION PASS — phones are deliberately untouched
+   ============================================================ */
+
+/* One frame for the whole site: header, footer, heroes and every section share the
+   same content width, so all left edges line up while scrolling. (Only affects
+   screens wider than the 1200px frame — narrower screens were already identical.) */
+.container--wide { max-width: var(--container); }
+
+@media (min-width: 1000px) {
+  /* Calmer vertical rhythm between sections on big screens. */
+  :root { --section-pad: clamp(4.5rem, 2rem + 6vw, 7.5rem); }
+
+  /* Inner-page openings: title sized for its column, text and photo balanced. */
+  .page-hero:not(.page-hero--center) .page-hero__title { font-size: clamp(3.2rem, 1.2rem + 3.6vw, 4.9rem); line-height: 1.02; }
+  .page-hero__inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(3rem, 6vw, 6rem); }
+  .page-hero__image { max-width: 460px; margin-inline: auto 0; }
+
+  /* ---- Duo: a brand image beside its neighbouring text section ---- */
+  .duo {
+    display: grid; align-items: center;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(3rem, 5.5vw, 6rem);
+    padding-block: var(--section-pad);
+    /* content aligned to the same frame as every other section */
+    padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
+    position: relative; isolation: isolate;
+  }
+  .duo--poster-first { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .duo--poster-first > .poster-moment { order: -1; }
+  .duo--cream { background: var(--surface); color: var(--text); }
+  .duo--deep  { background: var(--surface-deep); color: var(--text-on-dark); }
+  .duo--deep::after {            /* same fine grain the dark sections use */
+    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    opacity: 0.5; mix-blend-mode: soft-light;
+    background-image: var(--grain-tex); background-size: 220px 220px;
+  }
+  .duo > section {
+    padding: 0; background: none; border: 0; min-width: 0;
+    position: relative; z-index: 1;
+  }
+  .duo > section::after { display: none; }            /* grain comes from the wrapper */
+  .duo > section > .container { max-width: none; padding-inline: 0; margin: 0; }
+  .duo .poster-moment { display: block; }
+  .duo .poster-figure { max-width: 460px; margin-inline: auto; }
+
+  /* Text side reads as one left-aligned column. */
+  .duo .section-heading.is-centered { margin-inline: 0; text-align: left; }
+  .duo .eyebrow.is-centered { justify-content: flex-start; }
+  .duo .section-heading { margin-bottom: clamp(1.8rem, 3vw, 2.5rem); }
+  .duo .two-col,
+  .duo .two-col--split,
+  .duo .reflector__grid { grid-template-columns: 1fr; gap: 1.6rem; }
+  .duo .reflector__grid { margin-top: 2rem; }
+  .duo .areas { grid-template-columns: repeat(2, 1fr); }
+  .duo .pull-band { margin-top: 0; }
+}
+
+@media (min-width: 1000px) {
+  /* Subtitle under an opening title: keep its two lines together. */
+  .page-hero__sub { line-height: 1.25; margin-top: 0.8rem; }
+
+  /* Long text beside a photo: the photo stays in view while the text scrolls past. */
+  .duo--sticky { align-items: start; }
+  .duo--sticky > .poster-moment { position: sticky; top: calc(var(--header-h) + 2.5rem); }
+
+  /* Tighter heading-to-text spacing when a split section sits inside a duo. */
+  .duo .two-col--split { gap: 0.6rem; }
+  .duo .areas li { font-size: clamp(1.1rem, 1.4vw, 1.3rem); }
+}
+
+@media (min-width: 1100px) {
+  /* Footer inside the shared frame: each column takes its natural width, with the
+     spare space shared evenly between them — nothing wraps awkwardly. */
+  .site-footer__top { grid-template-columns: repeat(4, max-content); justify-content: space-between; }
+  .site-footer__nav a, .site-footer__contact { white-space: nowrap; }
+}
+
+@media (min-width: 1000px) {
+  /* Map card lines up with the shared content frame. */
+  .map-badge { left: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); }
+}
+
+@media (min-width: 1000px) {
+  /* Homepage headline: more presence beside the portrait on large screens. */
+  .hero__title--statement { font-size: clamp(2.7rem, 1.1rem + 2.5vw, 3.6rem); line-height: 1.12; }
+  .hero__copy { max-width: 36rem; }
+}
+@media (min-width: 1000px) {
+  /* Wider text column so each sentence breaks into two balanced lines. */
+  .hero__inner { grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); }
+  .hero__copy { max-width: 40rem; }
+  .hero__title--statement .ln { text-wrap: balance; }
+}
